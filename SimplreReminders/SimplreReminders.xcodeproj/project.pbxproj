@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030D237725D400C3A2F6 /* AppDelegate.swift */; };
+		BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030F237725D400C3A2F6 /* SceneDelegate.swift */; };
+		BF170312237725D400C3A2F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170311237725D400C3A2F6 /* ViewController.swift */; };
+		BF170315237725D400C3A2F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF170313237725D400C3A2F6 /* Main.storyboard */; };
+		BF170317237725D600C3A2F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF170316237725D600C3A2F6 /* Assets.xcassets */; };
+		BF17031A237725D600C3A2F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */; };
+		BF170325237725D600C3A2F6 /* SimplreRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170324237725D600C3A2F6 /* SimplreRemindersTests.swift */; };
+		BF1703312377266B00C3A2F6 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703302377266B00C3A2F6 /* RxDataSources */; };
+		BF1703342377272100C3A2F6 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703332377272100C3A2F6 /* RxRealm */; };
+		BF1703372377279C00C3A2F6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703362377279C00C3A2F6 /* RxSwift */; };
+		BF1703392377279C00C3A2F6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703382377279C00C3A2F6 /* RxTest */; };
+		BF17033B2377279C00C3A2F6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033A2377279C00C3A2F6 /* RxRelay */; };
+		BF17033D2377279C00C3A2F6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033C2377279C00C3A2F6 /* RxCocoa */; };
+		BF17033F2377279C00C3A2F6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033E2377279C00C3A2F6 /* RxBlocking */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF170321237725D600C3A2F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF170302237725D400C3A2F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF170309237725D400C3A2F6;
+			remoteInfo = SimplreReminders;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BF17030A237725D400C3A2F6 /* SimplreReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplreReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF17030D237725D400C3A2F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF17030F237725D400C3A2F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BF170311237725D400C3A2F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF170314237725D400C3A2F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF170316237725D600C3A2F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF170319237725D600C3A2F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF17031B237725D600C3A2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF170320237725D600C3A2F6 /* SimplreRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplreRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF170324237725D600C3A2F6 /* SimplreRemindersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplreRemindersTests.swift; sourceTree = "<group>"; };
+		BF170326237725D600C3A2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF170307237725D400C3A2F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF17033D2377279C00C3A2F6 /* RxCocoa in Frameworks */,
+				BF17033B2377279C00C3A2F6 /* RxRelay in Frameworks */,
+				BF1703392377279C00C3A2F6 /* RxTest in Frameworks */,
+				BF1703372377279C00C3A2F6 /* RxSwift in Frameworks */,
+				BF1703342377272100C3A2F6 /* RxRealm in Frameworks */,
+				BF1703312377266B00C3A2F6 /* RxDataSources in Frameworks */,
+				BF17033F2377279C00C3A2F6 /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF17031D237725D600C3A2F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF170301237725D400C3A2F6 = {
+			isa = PBXGroup;
+			children = (
+				BF17030C237725D400C3A2F6 /* SimplreReminders */,
+				BF170323237725D600C3A2F6 /* SimplreRemindersTests */,
+				BF17030B237725D400C3A2F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF17030B237725D400C3A2F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF17030A237725D400C3A2F6 /* SimplreReminders.app */,
+				BF170320237725D600C3A2F6 /* SimplreRemindersTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF17030C237725D400C3A2F6 /* SimplreReminders */ = {
+			isa = PBXGroup;
+			children = (
+				BF17030D237725D400C3A2F6 /* AppDelegate.swift */,
+				BF17030F237725D400C3A2F6 /* SceneDelegate.swift */,
+				BF170311237725D400C3A2F6 /* ViewController.swift */,
+				BF170313237725D400C3A2F6 /* Main.storyboard */,
+				BF170316237725D600C3A2F6 /* Assets.xcassets */,
+				BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */,
+				BF17031B237725D600C3A2F6 /* Info.plist */,
+			);
+			path = SimplreReminders;
+			sourceTree = "<group>";
+		};
+		BF170323237725D600C3A2F6 /* SimplreRemindersTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF170324237725D600C3A2F6 /* SimplreRemindersTests.swift */,
+				BF170326237725D600C3A2F6 /* Info.plist */,
+			);
+			path = SimplreRemindersTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF170309237725D400C3A2F6 /* SimplreReminders */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF170329237725D600C3A2F6 /* Build configuration list for PBXNativeTarget "SimplreReminders" */;
+			buildPhases = (
+				BF170306237725D400C3A2F6 /* Sources */,
+				BF170307237725D400C3A2F6 /* Frameworks */,
+				BF170308237725D400C3A2F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimplreReminders;
+			packageProductDependencies = (
+				BF1703302377266B00C3A2F6 /* RxDataSources */,
+				BF1703332377272100C3A2F6 /* RxRealm */,
+				BF1703362377279C00C3A2F6 /* RxSwift */,
+				BF1703382377279C00C3A2F6 /* RxTest */,
+				BF17033A2377279C00C3A2F6 /* RxRelay */,
+				BF17033C2377279C00C3A2F6 /* RxCocoa */,
+				BF17033E2377279C00C3A2F6 /* RxBlocking */,
+			);
+			productName = SimplreReminders;
+			productReference = BF17030A237725D400C3A2F6 /* SimplreReminders.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF17031F237725D600C3A2F6 /* SimplreRemindersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF17032C237725D600C3A2F6 /* Build configuration list for PBXNativeTarget "SimplreRemindersTests" */;
+			buildPhases = (
+				BF17031C237725D600C3A2F6 /* Sources */,
+				BF17031D237725D600C3A2F6 /* Frameworks */,
+				BF17031E237725D600C3A2F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF170322237725D600C3A2F6 /* PBXTargetDependency */,
+			);
+			name = SimplreRemindersTests;
+			productName = SimplreRemindersTests;
+			productReference = BF170320237725D600C3A2F6 /* SimplreRemindersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF170302237725D400C3A2F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = personal;
+				TargetAttributes = {
+					BF170309237725D400C3A2F6 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					BF17031F237725D600C3A2F6 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = BF170309237725D400C3A2F6;
+					};
+				};
+			};
+			buildConfigurationList = BF170305237725D400C3A2F6 /* Build configuration list for PBXProject "SimplreReminders" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF170301237725D400C3A2F6;
+			packageReferences = (
+				BF17032F2377266B00C3A2F6 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				BF1703322377272100C3A2F6 /* XCRemoteSwiftPackageReference "RxRealm" */,
+				BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
+			productRefGroup = BF17030B237725D400C3A2F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF170309237725D400C3A2F6 /* SimplreReminders */,
+				BF17031F237725D600C3A2F6 /* SimplreRemindersTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF170308237725D400C3A2F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF17031A237725D600C3A2F6 /* LaunchScreen.storyboard in Resources */,
+				BF170317237725D600C3A2F6 /* Assets.xcassets in Resources */,
+				BF170315237725D400C3A2F6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF17031E237725D600C3A2F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF170306237725D400C3A2F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF170312237725D400C3A2F6 /* ViewController.swift in Sources */,
+				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
+				BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF17031C237725D600C3A2F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF170325237725D600C3A2F6 /* SimplreRemindersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF170322237725D600C3A2F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF170309237725D400C3A2F6 /* SimplreReminders */;
+			targetProxy = BF170321237725D600C3A2F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF170313237725D400C3A2F6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF170314237725D400C3A2F6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF170319237725D600C3A2F6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF170327237725D600C3A2F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF170328237725D600C3A2F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF17032A237725D600C3A2F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2DE2DGLA;
+				INFOPLIST_FILE = SimplreReminders/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreReminders;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF17032B237725D600C3A2F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2DE2DGLA;
+				INFOPLIST_FILE = SimplreReminders/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreReminders;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF17032D237725D600C3A2F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2DE2DGLA;
+				INFOPLIST_FILE = SimplreRemindersTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreRemindersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimplreReminders.app/SimplreReminders";
+			};
+			name = Debug;
+		};
+		BF17032E237725D600C3A2F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2DE2DGLA;
+				INFOPLIST_FILE = SimplreRemindersTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreRemindersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimplreReminders.app/SimplreReminders";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF170305237725D400C3A2F6 /* Build configuration list for PBXProject "SimplreReminders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF170327237725D600C3A2F6 /* Debug */,
+				BF170328237725D600C3A2F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF170329237725D600C3A2F6 /* Build configuration list for PBXNativeTarget "SimplreReminders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF17032A237725D600C3A2F6 /* Debug */,
+				BF17032B237725D600C3A2F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF17032C237725D600C3A2F6 /* Build configuration list for PBXNativeTarget "SimplreRemindersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF17032D237725D600C3A2F6 /* Debug */,
+				BF17032E237725D600C3A2F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF17032F2377266B00C3A2F6 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		BF1703322377272100C3A2F6 /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+		BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF1703302377266B00C3A2F6 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF17032F2377266B00C3A2F6 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		BF1703332377272100C3A2F6 /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703322377272100C3A2F6 /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+		BF1703362377279C00C3A2F6 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		BF1703382377279C00C3A2F6 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		BF17033A2377279C00C3A2F6 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		BF17033C2377279C00C3A2F6 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		BF17033E2377279C00C3A2F6 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BF170302237725D400C3A2F6 /* Project object */;
+}
