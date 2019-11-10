@@ -15,14 +15,14 @@ protocol ReminderServiceType {
     
     @discardableResult
     func createReminder(title: String,
-                        category: CategoryItem,
+                        category: CategoryItem?,
                         dueDate: Date?) -> Observable<ReminderItem>
     
     @discardableResult
     func delete(reminder: ReminderItem) -> Observable<Void>
     
     @discardableResult
-    func update(reminder: ReminderItem, title: String) -> Observable<ReminderItem>
+    func update(reminder: ReminderItem, toState: ReminderUpdateState) -> Observable<ReminderItem>
     
     @discardableResult
     func toggle(reminder: ReminderItem) -> Observable<ReminderItem>

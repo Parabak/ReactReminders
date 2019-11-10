@@ -7,15 +7,24 @@
 //
 
 import Foundation
+import Action
+import RxSwift
 
 
 struct RemindersViewModel {
-    
 
     let dataProvider: ReminderServiceType
+    let addReminder: PublishSubject = PublishSubject<Void>()
     
     
-//    func open
+    func onAddReminder() -> CocoaAction {
+                
+        return CocoaAction { _ -> Observable<Void> in
+            self.addReminder.onNext(())
+            return self.addReminder.asObservable()
+        }
+    }
+    
     
     func openSettings() {
         

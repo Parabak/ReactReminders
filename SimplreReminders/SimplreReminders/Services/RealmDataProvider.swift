@@ -49,7 +49,9 @@ struct RealmDataProvider: DataProvider {
     
     //MARK: ReminderServiceType
     @discardableResult
-    func createReminder(title: String, category: CategoryItem, dueDate: Date?) -> Observable<ReminderItem> {
+    func createReminder(title: String,
+                        category: CategoryItem?,
+                        dueDate: Date?) -> Observable<ReminderItem> {
         return Observable.never()
     }
     
@@ -59,7 +61,7 @@ struct RealmDataProvider: DataProvider {
     }
     
     @discardableResult
-    func update(reminder: ReminderItem, title: String) -> Observable<ReminderItem> {
+    func update(reminder: ReminderItem, toState: ReminderUpdateState) -> Observable<ReminderItem> {
         return Observable.never()
     }
     

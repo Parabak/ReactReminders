@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import UIKit
 
+
 class CategoryItem: Object {
     
     @objc dynamic var uid: Int = 0

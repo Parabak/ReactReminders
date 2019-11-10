@@ -44,8 +44,6 @@ enum Color: String {
             color = UIColor.red
         case .green:
             color = UIColor.green
-        @unknown default:
-            color = UIColor.clear
         }
         
         return color

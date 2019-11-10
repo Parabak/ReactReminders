@@ -32,6 +32,11 @@
 		BF1703622378274800C3A2F6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703612378274800C3A2F6 /* Color.swift */; };
 		BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036323782F3000C3A2F6 /* BindableType.swift */; };
 		BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170365237832BD00C3A2F6 /* DataProvider.swift */; };
+		BF170369237862C100C3A2F6 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = BF170368237862C100C3A2F6 /* Action */; };
+		BF17036B2378830000C3A2F6 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036A2378830000C3A2F6 /* EditReminderViewController.swift */; };
+		BF17036D2378832500C3A2F6 /* EditReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */; };
+		BF17036F2378835E00C3A2F6 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */; };
+		BF1703712378A21600C3A2F6 /* EditReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703702378A21600C3A2F6 /* EditReminderCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +73,10 @@
 		BF1703612378274800C3A2F6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BF17036323782F3000C3A2F6 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		BF170365237832BD00C3A2F6 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		BF17036A2378830000C3A2F6 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
+		BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditReminderViewController.xib; sourceTree = "<group>"; };
+		BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
+		BF1703702378A21600C3A2F6 /* EditReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +87,7 @@
 				BF17033D2377279C00C3A2F6 /* RxCocoa in Frameworks */,
 				BF17033B2377279C00C3A2F6 /* RxRelay in Frameworks */,
 				BF1703372377279C00C3A2F6 /* RxSwift in Frameworks */,
+				BF170369237862C100C3A2F6 /* Action in Frameworks */,
 				BF1703342377272100C3A2F6 /* RxRealm in Frameworks */,
 				BF1703312377266B00C3A2F6 /* RxDataSources in Frameworks */,
 				BF17033F2377279C00C3A2F6 /* RxBlocking in Frameworks */,
@@ -145,6 +155,7 @@
 			children = (
 				BF1703412377282A00C3A2F6 /* Coordinator.swift */,
 				BF170343237728D300C3A2F6 /* RemindersListCoordinator.swift */,
+				BF1703702378A21600C3A2F6 /* EditReminderCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */,
+				BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -162,6 +174,8 @@
 			children = (
 				BF17034923772A3100C3A2F6 /* RemindersViewController.swift */,
 				BF17035023772DE900C3A2F6 /* RemindersViewController.xib */,
+				BF17036A2378830000C3A2F6 /* EditReminderViewController.swift */,
+				BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +232,7 @@
 				BF17033A2377279C00C3A2F6 /* RxRelay */,
 				BF17033C2377279C00C3A2F6 /* RxCocoa */,
 				BF17033E2377279C00C3A2F6 /* RxBlocking */,
+				BF170368237862C100C3A2F6 /* Action */,
 			);
 			productName = SimplreReminders;
 			productReference = BF17030A237725D400C3A2F6 /* SimplreReminders.app */;
@@ -273,6 +288,7 @@
 				BF17032F2377266B00C3A2F6 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BF1703322377272100C3A2F6 /* XCRemoteSwiftPackageReference "RxRealm" */,
 				BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				BF170367237862C100C3A2F6 /* XCRemoteSwiftPackageReference "Action" */,
 			);
 			productRefGroup = BF17030B237725D400C3A2F6 /* Products */;
 			projectDirPath = "";
@@ -291,6 +307,7 @@
 			files = (
 				BF17031A237725D600C3A2F6 /* LaunchScreen.storyboard in Resources */,
 				BF17035123772DE900C3A2F6 /* RemindersViewController.xib in Resources */,
+				BF17036D2378832500C3A2F6 /* EditReminderViewController.xib in Resources */,
 				BF170317237725D600C3A2F6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +328,8 @@
 			files = (
 				BF17035D237820AF00C3A2F6 /* RealmDataProvider.swift in Sources */,
 				BF1703422377282A00C3A2F6 /* Coordinator.swift in Sources */,
+				BF1703712378A21600C3A2F6 /* EditReminderCoordinator.swift in Sources */,
+				BF17036F2378835E00C3A2F6 /* EditReminderViewModel.swift in Sources */,
 				BF1703592377FD0600C3A2F6 /* Category.swift in Sources */,
 				BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */,
 				BF1703622378274800C3A2F6 /* Color.swift in Sources */,
@@ -321,6 +340,7 @@
 				BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */,
 				BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */,
 				BF1703572377FCFA00C3A2F6 /* Reminder.swift in Sources */,
+				BF17036B2378830000C3A2F6 /* EditReminderViewController.swift in Sources */,
 				BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */,
 				BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */,
 				BF170344237728D300C3A2F6 /* RemindersListCoordinator.swift in Sources */,
@@ -608,6 +628,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		BF170367237862C100C3A2F6 /* XCRemoteSwiftPackageReference "Action" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/Action";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -640,6 +668,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxBlocking;
+		};
+		BF170368237862C100C3A2F6 /* Action */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF170367237862C100C3A2F6 /* XCRemoteSwiftPackageReference "Action" */;
+			productName = Action;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
