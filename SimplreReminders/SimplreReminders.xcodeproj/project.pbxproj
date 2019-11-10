@@ -10,17 +10,20 @@
 		BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030D237725D400C3A2F6 /* AppDelegate.swift */; };
 		BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030F237725D400C3A2F6 /* SceneDelegate.swift */; };
 		BF170312237725D400C3A2F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170311237725D400C3A2F6 /* ViewController.swift */; };
-		BF170315237725D400C3A2F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF170313237725D400C3A2F6 /* Main.storyboard */; };
 		BF170317237725D600C3A2F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF170316237725D600C3A2F6 /* Assets.xcassets */; };
 		BF17031A237725D600C3A2F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */; };
 		BF170325237725D600C3A2F6 /* SimplreRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170324237725D600C3A2F6 /* SimplreRemindersTests.swift */; };
 		BF1703312377266B00C3A2F6 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703302377266B00C3A2F6 /* RxDataSources */; };
 		BF1703342377272100C3A2F6 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703332377272100C3A2F6 /* RxRealm */; };
 		BF1703372377279C00C3A2F6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703362377279C00C3A2F6 /* RxSwift */; };
-		BF1703392377279C00C3A2F6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = BF1703382377279C00C3A2F6 /* RxTest */; };
 		BF17033B2377279C00C3A2F6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033A2377279C00C3A2F6 /* RxRelay */; };
 		BF17033D2377279C00C3A2F6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033C2377279C00C3A2F6 /* RxCocoa */; };
 		BF17033F2377279C00C3A2F6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = BF17033E2377279C00C3A2F6 /* RxBlocking */; };
+		BF1703422377282A00C3A2F6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703412377282A00C3A2F6 /* Coordinator.swift */; };
+		BF170344237728D300C3A2F6 /* RemindersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170343237728D300C3A2F6 /* RemindersListCoordinator.swift */; };
+		BF170347237729BD00C3A2F6 /* RemindersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */; };
+		BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17034923772A3100C3A2F6 /* RemindersViewController.swift */; };
+		BF17035123772DE900C3A2F6 /* RemindersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF17035023772DE900C3A2F6 /* RemindersViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +41,17 @@
 		BF17030D237725D400C3A2F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF17030F237725D400C3A2F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF170311237725D400C3A2F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BF170314237725D400C3A2F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF170316237725D600C3A2F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF170319237725D600C3A2F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF17031B237725D600C3A2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF170320237725D600C3A2F6 /* SimplreRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplreRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF170324237725D600C3A2F6 /* SimplreRemindersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplreRemindersTests.swift; sourceTree = "<group>"; };
 		BF170326237725D600C3A2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF1703412377282A00C3A2F6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BF170343237728D300C3A2F6 /* RemindersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListCoordinator.swift; sourceTree = "<group>"; };
+		BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewModel.swift; sourceTree = "<group>"; };
+		BF17034923772A3100C3A2F6 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		BF17035023772DE900C3A2F6 /* RemindersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemindersViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +61,6 @@
 			files = (
 				BF17033D2377279C00C3A2F6 /* RxCocoa in Frameworks */,
 				BF17033B2377279C00C3A2F6 /* RxRelay in Frameworks */,
-				BF1703392377279C00C3A2F6 /* RxTest in Frameworks */,
 				BF1703372377279C00C3A2F6 /* RxSwift in Frameworks */,
 				BF1703342377272100C3A2F6 /* RxRealm in Frameworks */,
 				BF1703312377266B00C3A2F6 /* RxDataSources in Frameworks */,
@@ -93,10 +99,13 @@
 		BF17030C237725D400C3A2F6 /* SimplreReminders */ = {
 			isa = PBXGroup;
 			children = (
+				BF17034D23772C1000C3A2F6 /* Helpers */,
+				BF17034823772A1C00C3A2F6 /* Views */,
+				BF1703452377295E00C3A2F6 /* ViewModels */,
+				BF170340237727EF00C3A2F6 /* Coordinators */,
 				BF17030D237725D400C3A2F6 /* AppDelegate.swift */,
 				BF17030F237725D400C3A2F6 /* SceneDelegate.swift */,
 				BF170311237725D400C3A2F6 /* ViewController.swift */,
-				BF170313237725D400C3A2F6 /* Main.storyboard */,
 				BF170316237725D600C3A2F6 /* Assets.xcassets */,
 				BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */,
 				BF17031B237725D600C3A2F6 /* Info.plist */,
@@ -111,6 +120,39 @@
 				BF170326237725D600C3A2F6 /* Info.plist */,
 			);
 			path = SimplreRemindersTests;
+			sourceTree = "<group>";
+		};
+		BF170340237727EF00C3A2F6 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				BF1703412377282A00C3A2F6 /* Coordinator.swift */,
+				BF170343237728D300C3A2F6 /* RemindersListCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BF1703452377295E00C3A2F6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BF17034823772A1C00C3A2F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF17034923772A3100C3A2F6 /* RemindersViewController.swift */,
+				BF17035023772DE900C3A2F6 /* RemindersViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF17034D23772C1000C3A2F6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +175,6 @@
 				BF1703302377266B00C3A2F6 /* RxDataSources */,
 				BF1703332377272100C3A2F6 /* RxRealm */,
 				BF1703362377279C00C3A2F6 /* RxSwift */,
-				BF1703382377279C00C3A2F6 /* RxTest */,
 				BF17033A2377279C00C3A2F6 /* RxRelay */,
 				BF17033C2377279C00C3A2F6 /* RxCocoa */,
 				BF17033E2377279C00C3A2F6 /* RxBlocking */,
@@ -209,8 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF17031A237725D600C3A2F6 /* LaunchScreen.storyboard in Resources */,
+				BF17035123772DE900C3A2F6 /* RemindersViewController.xib in Resources */,
 				BF170317237725D600C3A2F6 /* Assets.xcassets in Resources */,
-				BF170315237725D400C3A2F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1703422377282A00C3A2F6 /* Coordinator.swift in Sources */,
+				BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */,
 				BF170312237725D400C3A2F6 /* ViewController.swift in Sources */,
+				BF170347237729BD00C3A2F6 /* RemindersViewModel.swift in Sources */,
 				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
 				BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */,
+				BF170344237728D300C3A2F6 /* RemindersListCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +298,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BF170313237725D400C3A2F6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF170314237725D400C3A2F6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BF170318237725D600C3A2F6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -400,7 +437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreReminders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -418,7 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.SimplreReminders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -540,11 +577,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		BF1703382377279C00C3A2F6 /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF1703352377279B00C3A2F6 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
 		};
 		BF17033A2377279C00C3A2F6 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
