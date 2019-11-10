@@ -24,6 +24,14 @@
 		BF170347237729BD00C3A2F6 /* RemindersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */; };
 		BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17034923772A3100C3A2F6 /* RemindersViewController.swift */; };
 		BF17035123772DE900C3A2F6 /* RemindersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF17035023772DE900C3A2F6 /* RemindersViewController.xib */; };
+		BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703532377FCBA00C3A2F6 /* ReminderServiceType.swift */; };
+		BF1703572377FCFA00C3A2F6 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703562377FCFA00C3A2F6 /* Reminder.swift */; };
+		BF1703592377FD0600C3A2F6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703582377FD0600C3A2F6 /* Category.swift */; };
+		BF17035B23781E8A00C3A2F6 /* CategoryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17035A23781E8A00C3A2F6 /* CategoryServiceType.swift */; };
+		BF17035D237820AF00C3A2F6 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17035C237820AF00C3A2F6 /* RealmDataProvider.swift */; };
+		BF1703622378274800C3A2F6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703612378274800C3A2F6 /* Color.swift */; };
+		BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036323782F3000C3A2F6 /* BindableType.swift */; };
+		BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170365237832BD00C3A2F6 /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +60,14 @@
 		BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewModel.swift; sourceTree = "<group>"; };
 		BF17034923772A3100C3A2F6 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		BF17035023772DE900C3A2F6 /* RemindersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemindersViewController.xib; sourceTree = "<group>"; };
+		BF1703532377FCBA00C3A2F6 /* ReminderServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceType.swift; sourceTree = "<group>"; };
+		BF1703562377FCFA00C3A2F6 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		BF1703582377FD0600C3A2F6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BF17035A23781E8A00C3A2F6 /* CategoryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryServiceType.swift; sourceTree = "<group>"; };
+		BF17035C237820AF00C3A2F6 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
+		BF1703612378274800C3A2F6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BF17036323782F3000C3A2F6 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		BF170365237832BD00C3A2F6 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +115,8 @@
 		BF17030C237725D400C3A2F6 /* SimplreReminders */ = {
 			isa = PBXGroup;
 			children = (
+				BF1703552377FCE200C3A2F6 /* Model */,
+				BF1703522377FC9100C3A2F6 /* Services */,
 				BF17034D23772C1000C3A2F6 /* Helpers */,
 				BF17034823772A1C00C3A2F6 /* Views */,
 				BF1703452377295E00C3A2F6 /* ViewModels */,
@@ -151,8 +169,30 @@
 		BF17034D23772C1000C3A2F6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BF1703612378274800C3A2F6 /* Color.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BF1703522377FC9100C3A2F6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BF1703532377FCBA00C3A2F6 /* ReminderServiceType.swift */,
+				BF17035A23781E8A00C3A2F6 /* CategoryServiceType.swift */,
+				BF17035C237820AF00C3A2F6 /* RealmDataProvider.swift */,
+				BF170365237832BD00C3A2F6 /* DataProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BF1703552377FCE200C3A2F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF1703562377FCFA00C3A2F6 /* Reminder.swift */,
+				BF1703582377FD0600C3A2F6 /* Category.swift */,
+				BF17036323782F3000C3A2F6 /* BindableType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,11 +309,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF17035D237820AF00C3A2F6 /* RealmDataProvider.swift in Sources */,
 				BF1703422377282A00C3A2F6 /* Coordinator.swift in Sources */,
+				BF1703592377FD0600C3A2F6 /* Category.swift in Sources */,
 				BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */,
+				BF1703622378274800C3A2F6 /* Color.swift in Sources */,
 				BF170312237725D400C3A2F6 /* ViewController.swift in Sources */,
 				BF170347237729BD00C3A2F6 /* RemindersViewModel.swift in Sources */,
+				BF17035B23781E8A00C3A2F6 /* CategoryServiceType.swift in Sources */,
 				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
+				BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */,
+				BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */,
+				BF1703572377FCFA00C3A2F6 /* Reminder.swift in Sources */,
+				BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */,
 				BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */,
 				BF170344237728D300C3A2F6 /* RemindersListCoordinator.swift in Sources */,
 			);

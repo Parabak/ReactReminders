@@ -9,13 +9,16 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 
-class RemindersViewController: UIViewController {
+class RemindersViewController: UIViewController, BindableType {
 
-    private let disposeBag = DisposeBag()
-    private(set) var viewModel: RemindersViewModel
+    typealias ViewModelType = RemindersViewModel
+
+    var viewModel: RemindersViewModel
     
+    private let disposeBag = DisposeBag()
     
     init(viewModel: RemindersViewModel) {
         
@@ -25,21 +28,28 @@ class RemindersViewController: UIViewController {
     }
     
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.showAddReminderNavButton()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
+    
+    func bindViewModel() {
         
-        self.configure(viewModel: self.viewModel)
+        
     }
     
     
-    func configure(viewModel: RemindersViewModel) {
-
-        // bind model rx.ViewDidLoad
+    //MARK: Private - Setup UI
+    private func showAddReminderNavButton() {
+    
+        let btn = UIButton(type: .contactAdd)
+//        btn.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
     }
 }

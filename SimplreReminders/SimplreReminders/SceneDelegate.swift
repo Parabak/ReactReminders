@@ -25,7 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = navigationController
             
-        mainCoordinator = RemindersListCoordinator(navigationController: navigationController)
+        do {
+        mainCoordinator = RemindersListCoordinator(navigationController: navigationController,
+                                                   dataProvider: try RealmDataProvider())
+        } catch {
+            assertionFailure("Realm Init is failed")
+            print("Error: " + error.localizedDescription)
+        }
         mainCoordinator?.start()
         
         window?.makeKeyAndVisible()
