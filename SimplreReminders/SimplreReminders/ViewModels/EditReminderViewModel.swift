@@ -25,9 +25,18 @@ struct ReminderUpdateState {
     }
     
     
+    init(title: String, date: Date, category: CategoryItem?) {
+    
+        self.title = title
+        self.date = date
+        self.category = category
+    }
+    
+    
     init() {
         self.title = ""
-        self.date = Date()
+        let now = Date()
+        self.date = Calendar.current.date(byAdding: .day, value: 1, to: now) ?? now
         self.category = nil
     }
 }
@@ -36,10 +45,10 @@ struct ReminderUpdateState {
 struct EditReminderViewModel {
     
     let reminderState: ReminderUpdateState
-    let categoriesProvider: CategoryServiceType
     let onUpdate: Action<ReminderUpdateState, Void>
     let onCancel: CocoaAction?
-    let disposeBag = DisposeBag()
+    private let categoriesProvider: CategoryServiceType
+    private  let disposeBag = DisposeBag()
     
     init(reminder: ReminderItem?,
          categoriesProvider: CategoryServiceType,
@@ -55,5 +64,12 @@ struct EditReminderViewModel {
         self.categoriesProvider = categoriesProvider
         onUpdate = updateAction
         onCancel = cancelAction
+    }
+    
+    
+    var categories: Observable<[CategoryItem]> {
+        
+        return categoriesProvider.categories()
+            .observeOn(MainScheduler.instance)
     }
 }

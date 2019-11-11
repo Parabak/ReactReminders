@@ -42,7 +42,7 @@ class RemindersViewController: UIViewController, BindableType {
     }
     
     
-    func bindViewModel() {
+    func bindViewModel() -> Void {
         
         // here display all reminders in the list
     }

@@ -99,7 +99,7 @@ struct RealmDataProvider: DataProvider {
         return Observable.never()
     }
     
-    func categories() -> Observable<[Category]> {
+    func categories() -> Observable<[CategoryItem]> {
         return Observable.never()
     }
     

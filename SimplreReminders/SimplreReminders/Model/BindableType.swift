@@ -16,13 +16,13 @@ protocol BindableType {
     
     var viewModel: ViewModelType { get set }
     
-    func bindViewModel()
+    func bindViewModel() -> Void
 }
 
 
 extension BindableType where Self: UIViewController {
     
-    mutating func bind(viewModel model: Self.ViewModelType) {
+    mutating func bind(viewModel model: Self.ViewModelType) -> Void {
         
         viewModel = model
         loadViewIfNeeded()
