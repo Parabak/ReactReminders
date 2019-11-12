@@ -14,14 +14,13 @@ import RxSwift
 struct RemindersViewModel {
 
     let dataProvider: ReminderServiceType
-//    let addReminder: PublishSubject = PublishSubject<Void>()
-    
+    let addReminder: PublishSubject = PublishSubject<Void>()
     
     func onAddReminder() -> CocoaAction {
                 
         return CocoaAction { _ -> Observable<Void> in
-//            self.addReminder.onNext(())
-            return Observable.empty() //self.addReminder.asObservable()
+            self.addReminder.onNext(())
+            return Observable.empty()
         }
     }
     

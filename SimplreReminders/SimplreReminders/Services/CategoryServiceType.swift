@@ -21,6 +21,6 @@ protocol CategoryServiceType {
     func changeColor(category: CategoryItem,
                      to newColor: Color) -> Observable<ReminderItem>
     
-    func categories() -> Observable<[CategoryItem]>
+    func categories() -> Observable<Results<CategoryItem>>
 }
 

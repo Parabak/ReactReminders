@@ -15,10 +15,12 @@ import Action
 final class EditReminderCoordinator: Coordinator {
     
     var coordinators = [Coordinator]()
+    let disposeBag = DisposeBag()
+    
     let navController: UINavigationController
     let reminder: ReminderItem?
     let dataProvider: DataProvider
-
+    
     
     init(navigationController: UINavigationController,
          reminder: ReminderItem?,
@@ -33,20 +35,24 @@ final class EditReminderCoordinator: Coordinator {
     func onUpdate(reminder: ReminderItem?) -> Action<ReminderUpdateState, Void> {
         return Action { newReminderState in
             
-            if newReminderState.title.isEmpty {
+            let observable : Observable<Void>
+            
+            if let reminder = reminder {
                 
-                return self.dataProvider.createReminder(title: newReminderState.title,
-                                                        category: newReminderState.category,
-                                                        dueDate: newReminderState.date).map {_ in }
-                
-            } else if let reminder = reminder {
-                
-                return self.dataProvider.update(reminder: reminder,
+                observable = self.dataProvider.update(reminder: reminder,
                                                 toState: newReminderState).map { _ in }
             } else {
                 
-                return Observable.empty()
+                observable = self.dataProvider.createReminder(title: newReminderState.title,
+                                                          category: newReminderState.category,
+                                                          dueDate: newReminderState.date).map {_ in }
             }
+            
+            observable.subscribe(onCompleted: {
+                self.onCancel().execute()
+            }).disposed(by: self.disposeBag)
+            
+            return observable
         }
     }
     
@@ -71,7 +77,8 @@ final class EditReminderCoordinator: Coordinator {
                                           categoriesProvider: dataProvider,
                                           updateAction: onUpdate(reminder: reminder),
                                           cancelAction: onCancel())
-        let controller = EditReminderViewController(viewModel: model)        
-        navController.present(controller, animated: true, completion: nil)
+        let controller = EditReminderViewController(viewModel: model)
+        let modalNavController = UINavigationController(rootViewController: controller)
+        navController.present(modalNavController, animated: true, completion: nil)
     }
 }

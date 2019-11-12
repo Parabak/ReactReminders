@@ -22,5 +22,13 @@ class ReminderItem: Object {
     @objc override class func primaryKey() -> String? {
         return "uid"
     }
+    
+    convenience init(title: String, dueDate: Date, category: CategoryItem?) {
+        
+        self.init()
+        self.title = title
+        self.dueDate = dueDate
+        self.category = category
+    }
 }
 

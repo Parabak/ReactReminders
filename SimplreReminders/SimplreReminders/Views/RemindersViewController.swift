@@ -13,7 +13,7 @@ import RxCocoa
 import Action
 
 
-class RemindersViewController: UIViewController, BindableType {
+class RemindersViewController: UIViewController {
 
     typealias ViewModelType = RemindersViewModel
 
@@ -37,7 +37,8 @@ class RemindersViewController: UIViewController, BindableType {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+     
+        bindViewModel()
         self.showAddReminderNavButton()
     }
     

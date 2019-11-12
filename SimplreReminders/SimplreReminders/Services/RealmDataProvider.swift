@@ -51,8 +51,17 @@ struct RealmDataProvider: DataProvider {
     @discardableResult
     func createReminder(title: String,
                         category: CategoryItem?,
-                        dueDate: Date?) -> Observable<ReminderItem> {
-        return Observable.never()
+                        dueDate: Date) -> Observable<ReminderItem> {
+        let result = withRealm("creatingReminder") { realm -> Observable<ReminderItem> in
+            
+            let reminder = ReminderItem(title: title, dueDate: dueDate, category: category)
+            try realm.write {
+                reminder.uid = (realm.objects(ReminderItem.self).max(ofProperty: "uid") ?? 0) + 1
+                realm.add(reminder)
+            }
+            return .just(reminder)
+        }
+        return result ?? .error(DataServiceError.creationFailed)
     }
     
     @discardableResult
@@ -99,8 +108,16 @@ struct RealmDataProvider: DataProvider {
         return Observable.never()
     }
     
-    func categories() -> Observable<[CategoryItem]> {
-        return Observable.never()
+    
+    func categories() -> Observable<Results<CategoryItem>> {
+        
+        let result = withRealm("Read Categories") { realm -> Observable<Results<CategoryItem>> in
+            
+            let objects = realm.objects(CategoryItem.self)
+            return Observable.collection(from: objects)
+        }
+        
+        return result ?? Observable.empty()
     }
     
     

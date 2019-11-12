@@ -70,6 +70,7 @@ struct EditReminderViewModel {
     var categories: Observable<[CategoryItem]> {
         
         return categoriesProvider.categories()
+            .map{ $0.toArray() }
             .observeOn(MainScheduler.instance)
     }
 }

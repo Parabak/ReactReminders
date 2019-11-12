@@ -30,7 +30,6 @@
 		BF17035B23781E8A00C3A2F6 /* CategoryServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17035A23781E8A00C3A2F6 /* CategoryServiceType.swift */; };
 		BF17035D237820AF00C3A2F6 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17035C237820AF00C3A2F6 /* RealmDataProvider.swift */; };
 		BF1703622378274800C3A2F6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703612378274800C3A2F6 /* Color.swift */; };
-		BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036323782F3000C3A2F6 /* BindableType.swift */; };
 		BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170365237832BD00C3A2F6 /* DataProvider.swift */; };
 		BF170369237862C100C3A2F6 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = BF170368237862C100C3A2F6 /* Action */; };
 		BF17036B2378830000C3A2F6 /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036A2378830000C3A2F6 /* EditReminderViewController.swift */; };
@@ -71,7 +70,6 @@
 		BF17035A23781E8A00C3A2F6 /* CategoryServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryServiceType.swift; sourceTree = "<group>"; };
 		BF17035C237820AF00C3A2F6 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
 		BF1703612378274800C3A2F6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		BF17036323782F3000C3A2F6 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		BF170365237832BD00C3A2F6 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		BF17036A2378830000C3A2F6 /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
 		BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditReminderViewController.xib; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				BF1703562377FCFA00C3A2F6 /* Reminder.swift */,
 				BF1703582377FD0600C3A2F6 /* Category.swift */,
-				BF17036323782F3000C3A2F6 /* BindableType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				BF17035B23781E8A00C3A2F6 /* CategoryServiceType.swift in Sources */,
 				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
 				BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */,
-				BF17036423782F3000C3A2F6 /* BindableType.swift in Sources */,
 				BF1703572377FCFA00C3A2F6 /* Reminder.swift in Sources */,
 				BF17036B2378830000C3A2F6 /* EditReminderViewController.swift in Sources */,
 				BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */,
