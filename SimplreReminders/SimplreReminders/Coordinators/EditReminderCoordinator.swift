@@ -21,7 +21,7 @@ final class EditReminderCoordinator: Coordinator {
 
     
     init(navigationController: UINavigationController,
-         reminder: ReminderItem,
+         reminder: ReminderItem?,
          categoriesProvider: DataProvider) {
     
         self.navController = navigationController
@@ -71,6 +71,7 @@ final class EditReminderCoordinator: Coordinator {
                                           categoriesProvider: dataProvider,
                                           updateAction: onUpdate(reminder: reminder),
                                           cancelAction: onCancel())
-//        let controller = EditReminderViewController(
+        let controller = EditReminderViewController(viewModel: model)        
+        navController.present(controller, animated: true, completion: nil)
     }
 }

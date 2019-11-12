@@ -38,9 +38,15 @@ final class RemindersListCoordinator: Coordinator {
     
     private func bindAddReminder(from model: RemindersViewModel) {
         
-        model.addReminder.subscribe(onNext: { _ in
-            print("Confirm: need to add")
-        }).disposed(by: disposeBag)
+//        model.addReminder.subscribe(onNext: { [weak self] _ in
+//            
+//            guard let self = self else { return }
+//            let editCoordinator = EditReminderCoordinator(navigationController: self.navController,
+//                                                          reminder: nil,
+//                                                          categoriesProvider: self.dataProvider)
+//            self.coordinators.append(editCoordinator)
+//            editCoordinator.start()            
+//        }).disposed(by: disposeBag)
         
     }
 }
