@@ -67,9 +67,17 @@ struct RealmDataProvider: DataProvider {
     
     @discardableResult
     func delete(reminder: ReminderItem) -> Observable<Void> {
-        assertionFailure("not implemented yet")
-        return Observable.never()
+        
+        let result = withRealm("DeletingItem") { realm -> Observable<Void> in
+            
+            try realm.write {
+                realm.delete(reminder)
+            }
+            return .empty()
+        }
+        return result ?? .error(DataServiceError.deletionFailed(reminder))
     }
+    
     
     @discardableResult
     func update(reminder: ReminderItem, toState: ReminderUpdateState) -> Observable<ReminderItem> {
@@ -88,7 +96,7 @@ struct RealmDataProvider: DataProvider {
             return .just(reminder)
         }
         
-        return result ?? .empty()
+        return result ?? .error(DataServiceError.toggleFailed(reminder))
     }
     
     

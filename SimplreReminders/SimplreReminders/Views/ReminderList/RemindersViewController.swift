@@ -21,7 +21,8 @@ class RemindersViewController: UIViewController {
     private(set) var tableView = UITableView()
     private let disposeBag = DisposeBag()
     private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<ReminderSection>(configureCell: configureCell,
-                                                                                          titleForHeaderInSection: configureTitleForHeader)
+                                                                                          titleForHeaderInSection: configureTitleForHeader,
+                                                                                          canEditRowAtIndexPath: canEditRowAtIndexPath)
     
     
     init(viewModel: RemindersViewModel) {
@@ -67,7 +68,6 @@ class RemindersViewController: UIViewController {
         tableView.register(ReminderItemTableCell.self,
                            forCellReuseIdentifier: "ReminderItemTableCell")
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 50
         
         self.view.addSubview(tableView)
         return [
@@ -84,6 +84,16 @@ class RemindersViewController: UIViewController {
         
         viewModel.sectionedReminders.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        tableView.rx.itemDeleted.map { [unowned self] indexPath -> ReminderItem? in
+            
+            return try? self.dataSource.model(at: indexPath) as? ReminderItem
+        }
+        .subscribe(onNext: { [weak self]  reminder in
+            guard let reminder = reminder else { return }
+            self?.viewModel.delete(item: reminder)
+        })
+        .disposed(by: disposeBag)
     }
     
     
@@ -106,6 +116,13 @@ class RemindersViewController: UIViewController {
     private var configureTitleForHeader : TableViewSectionedDataSource<ReminderSection>.TitleForHeaderInSection {
         return { dataSource, index in
             return dataSource.sectionModels[index].model
+        }
+    }
+    
+    private var canEditRowAtIndexPath: TableViewSectionedDataSource<ReminderSection>.CanEditRowAtIndexPath {
+        
+        return { dataSource, index in
+            return true
         }
     }
 }

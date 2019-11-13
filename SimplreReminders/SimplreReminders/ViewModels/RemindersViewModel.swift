@@ -42,6 +42,12 @@ struct RemindersViewModel {
     }
     
     
+    func delete(item: ReminderItem) -> Void {
+
+        dataProvider.delete(reminder: item)
+    }
+    
+    
     func onAddReminder() -> CocoaAction {
                 
         return CocoaAction { _ -> Observable<Void> in
