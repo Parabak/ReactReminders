@@ -8,9 +8,9 @@
 
 import Foundation
 import RealmSwift
+import RxDataSources
 
 
-//TODO: Still don't know how to connect Reminder and Category in Realm
 class ReminderItem: Object {
     
     @objc dynamic var uid: Int = 0
@@ -32,3 +32,10 @@ class ReminderItem: Object {
     }
 }
 
+
+extension ReminderItem: IdentifiableType {
+
+    var identity: Int {
+        return isInvalidated ? 0 : uid
+    }
+}

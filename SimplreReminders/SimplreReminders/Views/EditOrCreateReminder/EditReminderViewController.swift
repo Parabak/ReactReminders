@@ -193,13 +193,8 @@ class EditReminderViewController: UIViewController {
         }
         
         
-        datePicker.rx.date.asObservable().map { (date) -> String in
-            
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.doesRelativeDateFormatting = true
-            
-            return formatter.string(from: date)
+        datePicker.rx.date.asObservable().map { (date) -> String in            
+            return date.relativeFormat()
         }
         .bind(to: datePickerButton.rx.title())
         .disposed(by: disposeBag)

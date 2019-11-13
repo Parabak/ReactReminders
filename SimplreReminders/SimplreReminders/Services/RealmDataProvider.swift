@@ -64,22 +64,37 @@ struct RealmDataProvider: DataProvider {
         return result ?? .error(DataServiceError.creationFailed)
     }
     
+    
     @discardableResult
     func delete(reminder: ReminderItem) -> Observable<Void> {
+        assertionFailure("not implemented yet")
         return Observable.never()
     }
     
     @discardableResult
     func update(reminder: ReminderItem, toState: ReminderUpdateState) -> Observable<ReminderItem> {
+        assertionFailure("not implemented yet")
         return Observable.never()
     }
     
     @discardableResult
     func toggle(reminder: ReminderItem) -> Observable<ReminderItem> {
-        return Observable.never()
+        
+        let result = withRealm("ToggleItem") { realm -> Observable<ReminderItem> in
+            
+            try realm.write {
+                reminder.isDone.toggle()
+            }
+            return .just(reminder)
+        }
+        
+        return result ?? .empty()
     }
     
+    
     func reminders() -> Observable<Results<ReminderItem>> {
+        
+        assertionFailure("not implemented yet")
         return Observable.never()
     }
     
@@ -105,6 +120,7 @@ struct RealmDataProvider: DataProvider {
     
     @discardableResult
     func changeColor(category: CategoryItem, to newColor: Color) -> Observable<ReminderItem> {
+        assertionFailure("not implemented yet")
         return Observable.never()
     }
     
@@ -117,7 +133,7 @@ struct RealmDataProvider: DataProvider {
             return Observable.collection(from: objects)
         }
         
-        return result ?? Observable.empty()
+        return result ?? .empty()
     }
     
     
