@@ -67,7 +67,7 @@ class RemindersViewController: UIViewController {
         tableView.register(ReminderItemTableCell.self,
                            forCellReuseIdentifier: "ReminderItemTableCell")
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 50
+//        tableView.estimatedRowHeight = 50
         
         self.view.addSubview(tableView)
         return [

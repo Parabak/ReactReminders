@@ -26,7 +26,6 @@ struct RemindersViewModel {
             .map { reminders in
             
             //TODO: customize sorting by Settings.
-            let tmp = reminders.filter("isDone == true").sorted(byKeyPath: "title")
             let active = reminders.filter { !$0.isDone }.sorted { (lhs, rhs) -> Bool in
                 return lhs.title < rhs.title
             }

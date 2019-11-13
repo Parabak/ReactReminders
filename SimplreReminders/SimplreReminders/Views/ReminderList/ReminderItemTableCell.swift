@@ -26,9 +26,9 @@ class ReminderItemTableCell: UITableViewCell {
 
     private var manualConstraints = [NSLayoutConstraint]()
 
-    override func awakeFromNib() {
-
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         wrapOutletsInStackView()
         styleOutlets()
@@ -37,6 +37,11 @@ class ReminderItemTableCell: UITableViewCell {
             manualConstraints.append(contentsOf: setupConstraints())
             NSLayoutConstraint.activate(manualConstraints)
         }
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 
@@ -81,13 +86,16 @@ class ReminderItemTableCell: UITableViewCell {
     //MARK: Private
     private func setupConstraints() -> [NSLayoutConstraint] {
         
+        let bottom = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+        bottom.priority = UILayoutPriority(999)
+        
         return [
-            toggleBtn.widthAnchor.constraint(equalToConstant: 15),
-            toggleBtn.heightAnchor.constraint(equalToConstant: 15),
+            toggleBtn.widthAnchor.constraint(equalToConstant: 30),
+            toggleBtn.heightAnchor.constraint(equalToConstant: 30),
             stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: 15),
+            stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            bottom
         ]
     }
     
@@ -97,23 +105,29 @@ class ReminderItemTableCell: UITableViewCell {
         let textStack = UIStackView()
         textStack.axis = .vertical
         textStack.alignment = .leading
-        textStack.spacing = 0
         textStack.addArrangedSubview(titleLbl)
         textStack.addArrangedSubview(categoryLbl)
-        
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 15
         stackView.axis = .horizontal
         stackView.alignment = .center
+        stackView.distribution = .fill
         stackView.addArrangedSubview(toggleBtn)
         stackView.addArrangedSubview(textStack)
-        textStack.addArrangedSubview(dueDateLbl)
+        stackView.addArrangedSubview(dueDateLbl)
+        
+        addSubview(stackView)
     }
     
     
     private func styleOutlets() -> Void {
         
-        titleLbl.font = UIFont.systemFont(ofSize: 14)
-        categoryLbl.font = UIFont.systemFont(ofSize: 12)
-        dueDateLbl.font = UIFont.systemFont(ofSize: 10)
-        dueDateLbl.textColor = UIColor.lightText
+        titleLbl.font = UIFont.systemFont(ofSize: 18)
+        titleLbl.numberOfLines = 2
+        categoryLbl.font = UIFont.systemFont(ofSize: 15)
+        dueDateLbl.font = UIFont.systemFont(ofSize: 14)
+        dueDateLbl.textColor = UIColor.darkText        
+        toggleBtn.layer.cornerRadius = 15.0
     }
 }

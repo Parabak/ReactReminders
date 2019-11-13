@@ -94,8 +94,12 @@ struct RealmDataProvider: DataProvider {
     
     func reminders() -> Observable<Results<ReminderItem>> {
         
-        assertionFailure("not implemented yet")
-        return Observable.never()
+        let result = withRealm("ReadingReminders") { (realm) -> Observable<Results<ReminderItem>> in
+            
+            let reminders = realm.objects(ReminderItem.self)
+            return Observable.collection(from: reminders)
+        }
+        return result ?? .empty()
     }
     
     
