@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import Action
 
 
 final class RemindersListCoordinator: Coordinator {
@@ -26,39 +27,52 @@ final class RemindersListCoordinator: Coordinator {
     
     
     func start() {
-        
-//        let pulisher = BehaviorSubject(value: settings)
-//        let observable = Observable.of(settings)
-                
-//        pulisher.subscribe(onNext: { settings in
-//            print(settings.sortOption.description)
-//        }, onCompleted: {
-//            print("completed")
-//        }).disposed(by: disposeBag)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.settings.changeSortOption(to: .date)
-        }
-        
+                   
         let model = RemindersViewModel(dataProvider: dataProvider, settings: settings)
         let controller = RemindersViewController(viewModel: model)
         //TODO: use Scene and SceneCoordinatorInstead
         navController.pushViewController(controller, animated: false)
         
-        bindAddReminder(from: model)
+        bindActions(from: model)
     }
     
     
-    private func bindAddReminder(from model: RemindersViewModel) {
+    private func bindActions(from model: RemindersViewModel) {
         
         model.addReminder.subscribe(onNext: { [weak self] reminder in
             
             guard let self = self else { return }
             let editCoordinator = EditReminderCoordinator(navigationController: self.navController,
                                                           reminder: reminder,
-                                                          categoriesProvider: self.dataProvider)
-            self.coordinators.append(editCoordinator)
+                                                          categoriesProvider: self.dataProvider,
+                                                          closeAction: self.closeAction())
             editCoordinator.start()
         }).disposed(by: disposeBag)
+        
+        model.showSettings
+            .subscribe(onNext: { [weak self] _ in
+                
+                guard let self = self, let topController = self.navController.topViewController else { return }
+                let coordinator = SettingsCoordinator(presentingController: topController,
+                                                      settings: self.settings,
+                                                      categoriesProvider: self.dataProvider,
+                                                      closeAction: self.closeAction())
+                coordinator.start()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    
+    private func closeAction() -> CocoaAction {
+        
+        return CocoaAction {
+            
+            let subject = PublishSubject<Void>()
+            self.navController.dismiss(animated: true) {
+                subject.onCompleted()
+            }
+            
+            return subject
+        }
     }
 }

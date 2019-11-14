@@ -17,12 +17,13 @@ typealias ReminderSection = AnimatableSectionModel<String, ReminderItem>
 
 struct RemindersViewModel {
 
+    let addReminder = PublishSubject<ReminderItem?>()
+    let showSettings = PublishSubject<Void>()
+    let disposeBag = DisposeBag()
     let dataProvider: ReminderServiceType
-    let addReminder: PublishSubject = PublishSubject<ReminderItem?>()
     let settings: Settings
     
-    let disposeBag = DisposeBag()
- 
+    
     var sectionedReminders: Observable<[ReminderSection]> {
             
         return Observable.combineLatest(dataProvider.reminders(),
@@ -62,19 +63,29 @@ struct RemindersViewModel {
         return CocoaAction { _ -> Observable<Void> in
             
             self.addReminder.onNext(nil)
-            return Observable.empty()
+            return .empty()
+        }
+    }
+    
+    
+    func onOpenSettings() -> CocoaAction {
+        
+        return CocoaAction { _ -> Observable<Void> in
+            
+            self.showSettings.onNext(())
+            return .empty()
         }
     }
     
     
     lazy var selectReminder: Action<ReminderItem, Void> = { this in
         
-        let t = Action<ReminderItem, Void> { reminder -> Observable<Void> in
+        let action = Action<ReminderItem, Void> { reminder -> Observable<Void> in
             
             this.addReminder.onNext(reminder)
             return Observable.empty()
         }
-        return t
+        return action
     }(self)
     
         
@@ -83,26 +94,5 @@ struct RemindersViewModel {
         return CocoaAction {
             self.dataProvider.toggle(reminder: item).map { _ in }
         }
-    }
-    
-    func openSettings() {
-        
-        // ViewController call openSettings, how to propogate it to RemindersListCoordinator?
-        // Should RemindersListCoordinator subscribe for some observable?
-        
-        /* See
-         
-
-         private func bindShouldLoadWidget(from viewModel: DashboardContainerViewModel) {
-             viewModel.rx_shouldLoadWidget.asObservable()
-                 .subscribe(onNext: { [weak self] in
-                     self?.loadWidgets()
-                 })
-                 .addDisposableTo(disposeBag)
-         }
-         
-         */
-        
-        // To open settings I need to know about CategoryServiceType!
     }
 }

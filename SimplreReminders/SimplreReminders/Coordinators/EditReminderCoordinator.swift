@@ -20,15 +20,17 @@ final class EditReminderCoordinator: Coordinator {
     let navController: UINavigationController
     let reminder: ReminderItem?
     let dataProvider: DataProvider
-    
+    let onCloseAction: CocoaAction
     
     init(navigationController: UINavigationController,
          reminder: ReminderItem?,
-         categoriesProvider: DataProvider) {
+         categoriesProvider: DataProvider,
+         closeAction: CocoaAction) {
     
         self.navController = navigationController
         self.reminder = reminder
         self.dataProvider = categoriesProvider
+        self.onCloseAction = closeAction
     }
     
     
@@ -49,24 +51,10 @@ final class EditReminderCoordinator: Coordinator {
             }
             
             observable.subscribe(onCompleted: {
-                self.onCancel().execute()
+                self.onCloseAction.execute()
             }).disposed(by: self.disposeBag)
             
             return observable
-        }
-    }
-    
-    
-    func onCancel() -> CocoaAction {
-        
-        return CocoaAction {
-            
-            let subject = PublishSubject<Void>()
-            self.navController.dismiss(animated: true) {
-                subject.onCompleted()
-            }
-            
-            return subject
         }
     }
     
@@ -76,7 +64,7 @@ final class EditReminderCoordinator: Coordinator {
         let model = EditReminderViewModel(reminder: reminder,
                                           categoriesProvider: dataProvider,
                                           updateAction: onUpdate(reminder: reminder),
-                                          cancelAction: onCancel())
+                                          cancelAction: onCloseAction)
         let controller = EditReminderViewController(viewModel: model)
         let modalNavController = UINavigationController(rootViewController: controller)
         navController.present(modalNavController, animated: true, completion: nil)

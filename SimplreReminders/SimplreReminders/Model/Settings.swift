@@ -10,11 +10,12 @@ import Foundation
 import RxSwift
 
 
-enum SortOption: String {
+enum SortOption: String, CaseIterable {
     
     case alphabetical
     case date
 }
+
 
 extension SortOption: CustomStringConvertible {
     
@@ -29,7 +30,7 @@ extension SortOption: CustomStringConvertible {
 }
 
 
-struct Settings {
+final class Settings {
     
     let sortingOption: BehaviorSubject<SortOption>
     
@@ -41,7 +42,7 @@ struct Settings {
     }
     
     
-    mutating func changeSortOption(to option: SortOption) -> Void {
+    func changeSortOption(to option: SortOption) -> Void {
         
         sortingOption.onNext(option)
         UserDefaults.standard.set(option.rawValue, forKey: "sortingOption")

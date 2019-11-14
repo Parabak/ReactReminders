@@ -62,8 +62,8 @@ class EditReminderViewController: UIViewController {
         okBtn.setTitle("OK", for: .normal)
         okBtn.setTitleColor(UIColor.black, for: .normal)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: okBtn)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeBtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: okBtn)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeBtn)
     }
     
     

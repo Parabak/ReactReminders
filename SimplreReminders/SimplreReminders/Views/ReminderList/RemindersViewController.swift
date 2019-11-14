@@ -55,10 +55,15 @@ class RemindersViewController: UIViewController {
     //MARK: Private - Setup UI
     private func showAddReminderNavButton() -> Void {
     
-        var btn = UIButton(type: .contactAdd)
-        btn.rx.action = viewModel.onAddReminder()
+        var btnAdd = UIButton(type: .contactAdd)
+        btnAdd.rx.action = viewModel.onAddReminder()
         
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: btn)]
+        var btnSettings = UIButton(type: .custom)
+        btnSettings.setImage(UIImage(systemName: "gear"), for: .normal)
+        btnSettings.rx.action = viewModel.onOpenSettings()
+        
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: btnAdd),
+                                                   UIBarButtonItem(customView: btnSettings),]
     }
     
     
