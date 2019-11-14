@@ -85,6 +85,12 @@ class RemindersViewController: UIViewController {
         viewModel.sectionedReminders.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        tableView.rx.itemSelected.map { indexPath -> ReminderItem in
+            return try! self.dataSource.model(at: indexPath) as! ReminderItem
+        }
+        .subscribe(viewModel.selectReminder.inputs)
+        .disposed(by: disposeBag)
+        
         tableView.rx.itemDeleted.map { [unowned self] indexPath -> ReminderItem? in
             
             return try? self.dataSource.model(at: indexPath) as? ReminderItem

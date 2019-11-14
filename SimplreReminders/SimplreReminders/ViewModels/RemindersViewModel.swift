@@ -18,8 +18,8 @@ typealias ReminderSection = AnimatableSectionModel<String, ReminderItem>
 struct RemindersViewModel {
 
     let dataProvider: ReminderServiceType
-    let addReminder: PublishSubject = PublishSubject<Void>()
-    
+    let addReminder: PublishSubject = PublishSubject<ReminderItem?>()
+
     var sectionedReminders: Observable<[ReminderSection]> {
         
         return dataProvider.reminders()
@@ -51,12 +51,24 @@ struct RemindersViewModel {
     func onAddReminder() -> CocoaAction {
                 
         return CocoaAction { _ -> Observable<Void> in
-            self.addReminder.onNext(())
+            
+            self.addReminder.onNext(nil)
             return Observable.empty()
         }
     }
     
     
+    lazy var selectReminder: Action<ReminderItem, Void> = { this in
+        
+        let t = Action<ReminderItem, Void> { reminder -> Observable<Void> in
+            
+            this.addReminder.onNext(reminder)
+            return Observable.empty()
+        }
+        return t
+    }(self)
+    
+        
     func onToggle(item: ReminderItem) -> CocoaAction {
         
         return CocoaAction {

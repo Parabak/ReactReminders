@@ -38,11 +38,11 @@ final class RemindersListCoordinator: Coordinator {
     
     private func bindAddReminder(from model: RemindersViewModel) {
         
-        model.addReminder.subscribe(onNext: { [weak self] _ in
+        model.addReminder.subscribe(onNext: { [weak self] reminder in
             
             guard let self = self else { return }
             let editCoordinator = EditReminderCoordinator(navigationController: self.navController,
-                                                          reminder: nil,
+                                                          reminder: reminder,
                                                           categoriesProvider: self.dataProvider)
             self.coordinators.append(editCoordinator)
             editCoordinator.start()

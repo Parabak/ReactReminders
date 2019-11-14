@@ -81,9 +81,21 @@ struct RealmDataProvider: DataProvider {
     
     @discardableResult
     func update(reminder: ReminderItem, toState: ReminderUpdateState) -> Observable<ReminderItem> {
-        assertionFailure("not implemented yet")
-        return Observable.never()
+        
+        let result = withRealm("UpdatingItem") { (realm) -> Observable<ReminderItem> in
+            
+            try realm.write {
+                reminder.title = toState.title
+                reminder.category = toState.category
+                reminder.dueDate = toState.date
+            }
+            
+            return .just(reminder)
+        }
+        
+        return result ?? .error(DataServiceError.updateFailed(reminder))
     }
+    
     
     @discardableResult
     func toggle(reminder: ReminderItem) -> Observable<ReminderItem> {

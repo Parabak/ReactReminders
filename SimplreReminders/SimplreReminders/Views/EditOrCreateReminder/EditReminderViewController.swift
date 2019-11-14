@@ -136,6 +136,8 @@ class EditReminderViewController: UIViewController {
     
     func bindViewModel() -> Void {
         
+        titleTxtView.text = viewModel.reminderState.title
+        
         viewModel.categories.bind(to: categoryPicker.rx.itemTitles) { (row, element) in
             return element.name
         }.disposed(by: disposeBag)
@@ -158,6 +160,16 @@ class EditReminderViewController: UIViewController {
     }
     
     
+    private func selectRowInCategoryPicker(at idx: Int) -> Void {
+        
+        categoryPicker.selectRow(idx,
+                                 inComponent: 0,
+                                 animated: false)
+        categoryPicker.delegate?.pickerView!(categoryPicker,
+                                             didSelectRow: 0,
+                                             inComponent: 0)
+    }
+    
     //TODO: Refactoring. Extract small logic method.
     private func bindTogetherOutlets() {
         
@@ -173,23 +185,17 @@ class EditReminderViewController: UIViewController {
         .disposed(by: disposeBag)
     
         if let category = viewModel.reminderState.category {
-            
-            viewModel.categories.takeLast(1).subscribe(onNext: { [weak self] categories in
+    
+            let subject = ReplaySubject<[CategoryItem]>.create(bufferSize: 1)
+            _ = viewModel.categories.subscribe(subject)
+            subject.subscribe(onNext: { [weak self] categories in
                 
-                if let idx = categories.firstIndex(of: category) {
-                    
-                    self?.categoryPicker.selectRow(idx, inComponent: 0, animated: false)
-                } else {
-                    
-                    self?.categoryPicker.selectRow(0, inComponent: 0, animated: false)
-                }
+                let idx = categories.firstIndex(of: category) ?? 0
+                self?.selectRowInCategoryPicker(at: idx)
             })
             .disposed(by: disposeBag)
         } else {
-            categoryPicker.selectRow(0, inComponent: 0, animated: false)
-            categoryPicker.delegate?.pickerView!(categoryPicker,
-                                                 didSelectRow: 0,
-                                                 inComponent: 0)
+            selectRowInCategoryPicker(at: 0)
         }
         
         
