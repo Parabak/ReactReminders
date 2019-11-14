@@ -19,25 +19,34 @@ struct RemindersViewModel {
 
     let dataProvider: ReminderServiceType
     let addReminder: PublishSubject = PublishSubject<ReminderItem?>()
-
+    let settings: Settings
+    
+    let disposeBag = DisposeBag()
+ 
     var sectionedReminders: Observable<[ReminderSection]> {
-        
-        return dataProvider.reminders()
-            .map { reminders in
             
-            //TODO: customize sorting by Settings.
-            let active = reminders.filter { !$0.isDone }.sorted { (lhs, rhs) -> Bool in
-                return lhs.title < rhs.title
-            }
-            
-            let done = reminders.filter { $0.isDone }.sorted { (lhs, rhs) -> Bool in
-                return lhs.title < rhs.title
-            }
-            
-            return [
-                ReminderSection(model: "Incomplete", items: active),
-                ReminderSection(model: "Done", items: done)
-            ]
+        return Observable.combineLatest(dataProvider.reminders(),
+                                        settings.sortingOption)
+            .map { arg in
+                
+                let reminders = arg.0
+
+                func compare(lhs: ReminderItem, rhs: ReminderItem) -> Bool {
+                    switch arg.1 {
+                    case .alphabetical:
+                        return lhs.title < rhs.title
+                    case .date:
+                        return lhs.dueDate < rhs.dueDate
+                    }
+                }
+                
+                let active = reminders.filter { !$0.isDone }.sorted(by: compare(lhs:rhs:))
+                let done = reminders.filter { $0.isDone }.sorted(by: compare(lhs:rhs:))
+ 
+                return [
+                    ReminderSection(model: "Incomplete", items: active),
+                    ReminderSection(model: "Done", items: done)
+                ]
         }
     }
     

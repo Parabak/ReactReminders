@@ -17,7 +17,7 @@ final class RemindersListCoordinator: Coordinator {
     var coordinators = [Coordinator]()
     let navController: UINavigationController
     let dataProvider: DataProvider
-    
+    var settings = Settings()
     
     init(navigationController: UINavigationController, dataProvider: DataProvider) {
         navController = navigationController
@@ -27,7 +27,20 @@ final class RemindersListCoordinator: Coordinator {
     
     func start() {
         
-        let model = RemindersViewModel(dataProvider: dataProvider)
+//        let pulisher = BehaviorSubject(value: settings)
+//        let observable = Observable.of(settings)
+                
+//        pulisher.subscribe(onNext: { settings in
+//            print(settings.sortOption.description)
+//        }, onCompleted: {
+//            print("completed")
+//        }).disposed(by: disposeBag)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.settings.changeSortOption(to: .date)
+        }
+        
+        let model = RemindersViewModel(dataProvider: dataProvider, settings: settings)
         let controller = RemindersViewController(viewModel: model)
         //TODO: use Scene and SceneCoordinatorInstead
         navController.pushViewController(controller, animated: false)

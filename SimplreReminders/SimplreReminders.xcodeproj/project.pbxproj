@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09CB60A1237C5FFE00F5774E /* ReminderItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CB60A0237C5FFE00F5774E /* ReminderItemTableCell.swift */; };
+		09D67484237D79E900BC20A7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D67483237D79E900BC20A7 /* Settings.swift */; };
 		BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030D237725D400C3A2F6 /* AppDelegate.swift */; };
 		BF170310237725D400C3A2F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17030F237725D400C3A2F6 /* SceneDelegate.swift */; };
 		BF170312237725D400C3A2F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF170311237725D400C3A2F6 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		09CB60A0237C5FFE00F5774E /* ReminderItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemTableCell.swift; sourceTree = "<group>"; };
+		09D67483237D79E900BC20A7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BF17030A237725D400C3A2F6 /* SimplreReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplreReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF17030D237725D400C3A2F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF17030F237725D400C3A2F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				BF1703562377FCFA00C3A2F6 /* Reminder.swift */,
 				BF1703582377FD0600C3A2F6 /* Category.swift */,
+				09D67483237D79E900BC20A7 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
 				09CB60A1237C5FFE00F5774E /* ReminderItemTableCell.swift in Sources */,
 				BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */,
+				09D67484237D79E900BC20A7 /* Settings.swift in Sources */,
 				BF1703572377FCFA00C3A2F6 /* Reminder.swift in Sources */,
 				BF17036B2378830000C3A2F6 /* EditReminderViewController.swift in Sources */,
 				BF170366237832BD00C3A2F6 /* DataProvider.swift in Sources */,

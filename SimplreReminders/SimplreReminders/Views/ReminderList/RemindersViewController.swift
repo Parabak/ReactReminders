@@ -81,7 +81,7 @@ class RemindersViewController: UIViewController {
     
     // MARK: Private
     private func bindViewModel() -> Void {
-        
+                
         viewModel.sectionedReminders.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
