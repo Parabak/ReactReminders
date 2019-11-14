@@ -42,6 +42,7 @@
 		BF17036D2378832500C3A2F6 /* EditReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */; };
 		BF17036F2378835E00C3A2F6 /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */; };
 		BF1703712378A21600C3A2F6 /* EditReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1703702378A21600C3A2F6 /* EditReminderCoordinator.swift */; };
+		BF8E8DBC237DE025002A2897 /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E8DBB237DE025002A2897 /* CategoryTableCell.swift */; };
 		BF945F2C237C8A85001E98F8 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF945F2B237C8A85001E98F8 /* Date+Format.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		BF17036C2378832500C3A2F6 /* EditReminderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditReminderViewController.xib; sourceTree = "<group>"; };
 		BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
 		BF1703702378A21600C3A2F6 /* EditReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderCoordinator.swift; sourceTree = "<group>"; };
+		BF8E8DBB237DE025002A2897 /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
 		BF945F2B237C8A85001E98F8 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			children = (
 				09D6748A237D9A6100BC20A7 /* SettingsViewController.swift */,
 				09D6748C237D9AD200BC20A7 /* SettingsViewController.xib */,
+				BF8E8DBB237DE025002A2897 /* CategoryTableCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				BF1703592377FD0600C3A2F6 /* Category.swift in Sources */,
 				BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */,
 				BF1703622378274800C3A2F6 /* Color.swift in Sources */,
+				BF8E8DBC237DE025002A2897 /* CategoryTableCell.swift in Sources */,
 				BF945F2C237C8A85001E98F8 /* Date+Format.swift in Sources */,
 				BF170312237725D400C3A2F6 /* ViewController.swift in Sources */,
 				BF170347237729BD00C3A2F6 /* RemindersViewModel.swift in Sources */,

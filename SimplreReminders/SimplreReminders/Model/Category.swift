@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-import UIKit
+import RxDataSources
 
 
 class CategoryItem: Object {
@@ -36,5 +36,12 @@ class CategoryItem: Object {
                 ("Family", Color.purple),
                 ("Long-term", Color.green)]
     }
+}
 
+
+extension CategoryItem: IdentifiableType {
+    
+    var identity: Int {
+        return isInvalidated ? 0 : uid
+    }
 }

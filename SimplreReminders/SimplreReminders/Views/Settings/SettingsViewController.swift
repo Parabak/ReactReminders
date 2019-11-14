@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxDataSources
 
 
 class SettingsViewController: UIViewController {
@@ -19,6 +20,10 @@ class SettingsViewController: UIViewController {
     let addCategory = UIButton()
     var closeBtn = UIButton()
     let disposeBag = DisposeBag()
+    
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<CategoriesSection>(configureCell: configureCell,
+                                                                                            titleForHeaderInSection: configureTitleHeader)
+    
     
     init(viewModel: SettingsViewModel) {
         
@@ -63,6 +68,10 @@ class SettingsViewController: UIViewController {
             self.viewModel.settings.changeSortOption(to: option)
             })
         .disposed(by: disposeBag)
+        
+        viewModel.sectionCategories
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
     
     
@@ -71,6 +80,9 @@ class SettingsViewController: UIViewController {
         let hint = UILabel()
         hint.text = "Define how reminders should be ordered:"
         
+        tableView.register(CategoryTableCell.self,
+                           forCellReuseIdentifier: "CategoryTableCell")
+        tableView.rowHeight = UITableView.automaticDimension
         
         addCategory.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         let toolBar = UIToolbar()
@@ -103,5 +115,27 @@ class SettingsViewController: UIViewController {
         closeBtn.setImage(UIImage(systemName: "xmark"),
                           for: .normal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeBtn)
+    }
+    
+    
+    private var configureCell: TableViewSectionedDataSource<CategoriesSection>.ConfigureCell {
+        
+        return { dataSource, tableView, indexPath, category in
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableCell")
+            if let categoryCell = cell as? CategoryTableCell {
+                
+                categoryCell.configure(with: category)
+            }
+            
+            return cell ?? UITableViewCell()
+        }
+    }
+    
+    
+    private var configureTitleHeader: TableViewSectionedDataSource<CategoriesSection>.TitleForHeaderInSection {
+        return { _, _ in
+            return "Categories"
+        }
     }
 }

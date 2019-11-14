@@ -23,7 +23,6 @@ class ReminderItemTableCell: UITableViewCell {
     private var toggleBtn = UIButton()
     
 //    ✅✔️
-
     private var manualConstraints = [NSLayoutConstraint]()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,13 +53,15 @@ class ReminderItemTableCell: UITableViewCell {
         
         toggleBtn.rx.action = toggleAction
         
-        item.rx.observe(String.self, "title")
+        item.rx
+            .observe(String.self, "title")
             .subscribe(onNext: { [weak self] title in
                 self?.titleLbl.text = title
             })
             .disposed(by: disposeBag)
                 
-        Observable.combineLatest(item.rx.observe(CategoryItem.self, "category"), item.rx.observe(Bool.self, "isDone"))
+        Observable.combineLatest(item.rx.observe(CategoryItem.self, "category"),
+                                 item.rx.observe(Bool.self, "isDone"))
             .subscribe(onNext: { [weak self] arg in
             
                 let (category, isDone) = arg
@@ -75,7 +76,8 @@ class ReminderItemTableCell: UITableViewCell {
             })
             .disposed(by: disposeBag)
         
-        item.rx.observe(Date.self, "dueDate")
+        item.rx
+            .observe(Date.self, "dueDate")
             .subscribe(onNext: { [weak self] date in
                 self?.dueDateLbl.text = date?.relativeFormat()
             })
@@ -86,6 +88,7 @@ class ReminderItemTableCell: UITableViewCell {
     //MARK: Private
     private func setupConstraints() -> [NSLayoutConstraint] {
         
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         let bottom = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         bottom.priority = UILayoutPriority(999)
         
@@ -108,7 +111,6 @@ class ReminderItemTableCell: UITableViewCell {
         textStack.addArrangedSubview(titleLbl)
         textStack.addArrangedSubview(categoryLbl)
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 15
         stackView.axis = .horizontal
         stackView.alignment = .center
