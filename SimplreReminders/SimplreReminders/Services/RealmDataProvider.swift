@@ -143,7 +143,7 @@ struct RealmDataProvider: DataProvider {
     
     
     @discardableResult
-    func changeColor(category: CategoryItem, to newColor: Color) -> Observable<ReminderItem> {
+    func changeColor(category: CategoryItem, to newColor: Color) -> Observable<CategoryItem> {
         assertionFailure("not implemented yet")
         return Observable.never()
     }
@@ -159,7 +159,4 @@ struct RealmDataProvider: DataProvider {
         
         return result ?? .empty()
     }
-    
-    
-    
 }

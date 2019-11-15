@@ -18,9 +18,11 @@ typealias CategoriesSection = AnimatableSectionModel<String, CategoryItem>
  
 struct SettingsViewModel {
     
+    let addCategory = PublishSubject<CategoryItem?>()
     private let categoriesProvider: CategoryServiceType
     let settings: Settings
     let onCancel: CocoaAction?
+    let disposeBag = DisposeBag()
     
     
     init(categoriesProvider: CategoryServiceType,
@@ -42,7 +44,15 @@ struct SettingsViewModel {
             }
     }
     
-    //TODO: Add category
+    
+    func onAddCategory() -> CocoaAction {
+        
+        return CocoaAction {
+            
+            self.addCategory.onNext(nil)
+            return .empty()
+        }
+    }
     //TODO: Create Category. Implement like in Spendee
     //TODO: Edit Category
  }

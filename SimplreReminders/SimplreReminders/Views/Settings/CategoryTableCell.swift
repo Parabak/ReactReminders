@@ -18,19 +18,14 @@ class CategoryTableCell: UITableViewCell {
     private var nameLbl = UILabel()
     private var colorPreview = UIView()
     
-    private var manualConstraints = [NSLayoutConstraint]()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         wrapOutletsInStackView()
         styleOutlets()
-        
-        if manualConstraints.isEmpty {
-            manualConstraints.append(contentsOf: setupConstraints())
-            NSLayoutConstraint.activate(manualConstraints)
-        }
+    
+        NSLayoutConstraint.activate(setupConstraints())
     }
     
     

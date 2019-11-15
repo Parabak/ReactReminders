@@ -14,13 +14,13 @@ import RxDataSources
 
 class SettingsViewController: UIViewController {
     
+    var toolbarHeight: NSLayoutConstraint?
     let viewModel: SettingsViewModel
     let sortingOptionsControl = UISegmentedControl(items: SortOption.allCases.map{$0.rawValue})
     let tableView = UITableView()
-    let addCategory = UIButton()
+    var addCategory = UIButton()
     var closeBtn = UIButton()
     let disposeBag = DisposeBag()
-    
     private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<CategoriesSection>(configureCell: configureCell,
                                                                                             titleForHeaderInSection: configureTitleHeader)
     
@@ -72,6 +72,8 @@ class SettingsViewController: UIViewController {
         viewModel.sectionCategories
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        addCategory.rx.action = viewModel.onAddCategory()
     }
     
     
@@ -84,9 +86,12 @@ class SettingsViewController: UIViewController {
                            forCellReuseIdentifier: "CategoryTableCell")
         tableView.rowHeight = UITableView.automaticDimension
         
-        addCategory.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        addCategory.setBackgroundImage(UIImage(systemName: "plus.circle"), for: .normal)
+        addCategory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let toolBar = UIToolbar()
-        toolBar.addSubview(addCategory)
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        space.width = 15
+        toolBar.items = [space, UIBarButtonItem(customView: addCategory)]
         
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -100,15 +105,22 @@ class SettingsViewController: UIViewController {
         view.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        toolbarHeight = toolBar.heightAnchor.constraint(equalToConstant: 30 + view.safeAreaInsets.bottom)
         return [
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            toolBar.heightAnchor.constraint(equalToConstant: 30 + view.safeAreaInsets.bottom),
+            toolbarHeight!
         ]
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        
+        toolbarHeight?.constant = 30 + view.safeAreaInsets.bottom
+        view.setNeedsLayout()
+    }
     
     private func showCloseButton() -> Void {
         

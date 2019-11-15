@@ -42,7 +42,7 @@ final class EditReminderCoordinator: Coordinator {
             if let reminder = reminder {
                 
                 observable = self.dataProvider.update(reminder: reminder,
-                                                toState: newReminderState).map { _ in }
+                                                      toState: newReminderState).map { _ in }
             } else {
                 
                 observable = self.dataProvider.createReminder(title: newReminderState.title,

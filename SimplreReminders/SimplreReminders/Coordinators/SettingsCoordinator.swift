@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import RxSwift
 import Action
 
 
 final class SettingsCoordinator: Coordinator {
     
     var coordinators = [Coordinator]()
+    let disposeBag = DisposeBag()
     let settings: Settings
     let presentingController: UIViewController
     let categoriesProvider: CategoryServiceType
@@ -39,5 +41,24 @@ final class SettingsCoordinator: Coordinator {
         let controller = SettingsViewController(viewModel: model)
         let navController = UINavigationController(rootViewController: controller)
         presentingController.present(navController, animated: true, completion: nil)
+        
+        bindActions(from: model)
+    }
+    
+
+    private func bindActions(from model: SettingsViewModel) -> Void {
+
+        model.addCategory
+            .subscribe(onNext: { [weak self] category in
+                
+                guard let self = self,
+                    let navController = self.presentingController.presentedViewController as? UINavigationController  else { return }
+                let coordinator = EditCategoryCoordinator(navigationController: navController,
+                                                          categoryService: self.categoriesProvider)
+                coordinator.start()
+                }, onCompleted: {
+                    print("completed")
+            })
+            .disposed(by: disposeBag)
     }
 }

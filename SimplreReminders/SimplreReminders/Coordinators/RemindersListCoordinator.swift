@@ -38,7 +38,7 @@ final class RemindersListCoordinator: Coordinator {
     
     
     private func bindActions(from model: RemindersViewModel) {
-        
+
         model.addReminder.subscribe(onNext: { [weak self] reminder in
             
             guard let self = self else { return }
@@ -58,6 +58,8 @@ final class RemindersListCoordinator: Coordinator {
                                                       categoriesProvider: self.dataProvider,
                                                       closeAction: self.closeAction())
                 coordinator.start()
+                
+                self.coordinators.append(coordinator)
             })
             .disposed(by: disposeBag)
     }
@@ -69,6 +71,8 @@ final class RemindersListCoordinator: Coordinator {
             
             let subject = PublishSubject<Void>()
             self.navController.dismiss(animated: true) {
+                
+                self.coordinators = self.coordinators.dropLast()                
                 subject.onCompleted()
             }
             

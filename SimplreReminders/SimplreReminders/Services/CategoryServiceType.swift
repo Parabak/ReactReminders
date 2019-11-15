@@ -19,7 +19,7 @@ protocol CategoryServiceType {
     
     @discardableResult
     func changeColor(category: CategoryItem,
-                     to newColor: Color) -> Observable<ReminderItem>
+                     to newColor: Color) -> Observable<CategoryItem>
     
     func categories() -> Observable<Results<CategoryItem>>
 }

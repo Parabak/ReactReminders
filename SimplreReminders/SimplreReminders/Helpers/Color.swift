@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import RxDataSources
 
 
-enum Color: String {
+enum Color: String, CaseIterable {
     case black
     case blue
     case yeallow
@@ -51,4 +52,10 @@ enum Color: String {
 }
 
 
+extension Color: IdentifiableType {
+    
 
+    var identity: String {
+        return rawValue
+    }
+}
