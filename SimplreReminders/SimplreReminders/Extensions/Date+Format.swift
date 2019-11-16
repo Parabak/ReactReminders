@@ -15,11 +15,12 @@ extension Date {
     /// Use DateFormatter to convert Date instance to String form considering date's relation to `today`.
     func relativeFormat() -> String {
         
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.doesRelativeDateFormatting = true
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.doesRelativeDateFormatting = true
         
-        return formatter.string(from: self)
+        return dateFormatter.string(from: self)
     }
 }
 

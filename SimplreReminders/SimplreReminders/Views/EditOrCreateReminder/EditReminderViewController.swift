@@ -104,7 +104,7 @@ class EditReminderViewController: UIViewController {
         
         view.addSubview(datePicker)
         
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         datePicker.date = viewModel.reminderState.date
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         
