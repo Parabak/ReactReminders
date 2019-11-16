@@ -21,6 +21,7 @@ class EditReminderViewController: UIViewController {
     let datePickerButton = UIButton()
     let categoryPickerButton = UIButton()
     let contentStackView = UIStackView()
+    let notificationSwitcher = UISwitch()
     
     private let disposeBag = DisposeBag()
     private var datePickerBottomConstraint: NSLayoutConstraint?
@@ -72,7 +73,7 @@ class EditReminderViewController: UIViewController {
         let lblHint = UILabel()
         lblHint.text = "Title:"
         
-        self.view.addSubview(contentStackView)
+        view.addSubview(contentStackView)
         
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.spacing = 15
@@ -84,11 +85,12 @@ class EditReminderViewController: UIViewController {
         contentStackView.addArrangedSubview(titleTxtView)
         contentStackView.addArrangedSubview(categoryPickerButton)
         contentStackView.addArrangedSubview(datePickerButton)
-
+        contentStackView.addArrangedSubview(wrapNotificationSwitcher())
+        
         titleTxtView.layer.borderColor = UIColor.lightGray.cgColor
         titleTxtView.layer.borderWidth = 1
         categoryPickerButton.setTitleColor(UIColor.black, for: .normal)
-        datePickerButton.setTitleColor(UIColor.black, for: .normal)
+        datePickerButton.setTitleColor(UIColor.black, for: .normal)        
         
         return [
             contentStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
@@ -97,6 +99,22 @@ class EditReminderViewController: UIViewController {
             titleTxtView.heightAnchor.constraint(equalToConstant: 100),
             titleTxtView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ]
+    }
+    
+    
+    private func wrapNotificationSwitcher() -> UIStackView {
+        
+        let lblNotificationHint = UILabel()
+        lblNotificationHint.text = "Send notification: "
+        
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        
+        stackView.addArrangedSubview(lblNotificationHint)
+        stackView.addArrangedSubview(notificationSwitcher)
+        
+        return stackView
     }
     
     
@@ -142,15 +160,18 @@ class EditReminderViewController: UIViewController {
             return element.name
         }.disposed(by: disposeBag)
         
+        notificationSwitcher.isOn = viewModel.reminderState.hasNotification
+        
         let text = titleTxtView.rx.text.orEmpty.asObservable()
         let category = categoryPicker.rx.modelSelected(CategoryItem.self).asObservable().map {$0.first}
         let date = datePicker.rx.date.asObservable()
-    
+        let notification = notificationSwitcher.rx.isOn.asObservable()
+        
         okBtn.rx.tap
-            .withLatestFrom(Observable.combineLatest(text, category, date))
+            .withLatestFrom(Observable.combineLatest(text, category, date, notification))
             .filter{ !$0.0.isEmpty}
-            .map { (text, categoryItem, date) -> ReminderUpdateState in
-                ReminderUpdateState(title: text, date: date, category: categoryItem)
+            .map { (text, categoryItem, date, notification) -> ReminderUpdateState in
+                ReminderUpdateState(title: text, date: date, category: categoryItem, hasNotification: notification)
         }.subscribe(viewModel.onUpdate.inputs)
             .disposed(by: disposeBag)
         
@@ -234,6 +255,24 @@ class EditReminderViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 }
         }).disposed(by: disposeBag)
+        
+        
+        notificationSwitcher.rx.isOn
+            .filter {$0}
+            .subscribe(onNext: { [weak self] flag in
+            
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (granted, error) in
+                    
+                    DispatchQueue.main.async {
+                        self?.notificationSwitcher.isOn = granted
+                    }
+                    
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     //TODO: never called. reference loop

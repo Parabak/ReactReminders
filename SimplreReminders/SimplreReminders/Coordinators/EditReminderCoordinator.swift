@@ -35,26 +35,46 @@ final class EditReminderCoordinator: Coordinator {
     
     
     func onUpdate(reminder: ReminderItem?) -> Action<ReminderUpdateState, Void> {
-        return Action { newReminderState in
+        return Action {  newReminderState in
             
-            let observable : Observable<Void>
+            let observable : Observable<ReminderItem>
             
             if let reminder = reminder {
                 
                 observable = self.dataProvider.update(reminder: reminder,
-                                                      toState: newReminderState).map { _ in }
+                                                      toState: newReminderState)
             } else {
                 
                 observable = self.dataProvider.createReminder(title: newReminderState.title,
-                                                          category: newReminderState.category,
-                                                          dueDate: newReminderState.date).map {_ in }
+                                                              category: newReminderState.category,
+                                                              dueDate: newReminderState.date,
+                                                              withNotification: newReminderState.hasNotification)
             }
             
-            observable.subscribe(onCompleted: {
-                self.onCloseAction.execute()
-            }).disposed(by: self.disposeBag)
+            observable
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { reminder in
+                        
+                    //TODO: create or cancel Local Notification
+//                    DispatchQueue.main.async {
+
+                        if reminder.hasNotification {
+                            
+                            UNUserNotificationCenter.current().createNotificationIfNotExist(from: reminder)
+                            
+                        } else {
+                            
+                            UNUserNotificationCenter.current().cancelReminderNotification(for: reminder.uid.description)
+                        }
+                        
+//                    }
+                    
+                }, onCompleted: { [weak self] in
+                    self?.onCloseAction.execute()
+                })
+                .disposed(by: self.disposeBag)
             
-            return observable
+            return observable.map {_ in }
         }
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import Action
 import RxSwift
 import RxDataSources
+import UserNotifications
 
 
 typealias ReminderSection = AnimatableSectionModel<String, ReminderItem>
@@ -54,6 +55,7 @@ struct RemindersViewModel {
     
     func delete(item: ReminderItem) -> Void {
 
+        UNUserNotificationCenter.current().cancelReminderNotification(for: item.uid.description)
         dataProvider.delete(reminder: item)
     }
     
@@ -92,7 +94,10 @@ struct RemindersViewModel {
     func onToggle(item: ReminderItem) -> CocoaAction {
         
         return CocoaAction {
-            self.dataProvider.toggle(reminder: item).map { _ in }
+            if item.hasNotification {
+                UNUserNotificationCenter.current().cancelReminderNotification(for: item.uid.description)
+            }
+            return self.dataProvider.toggle(reminder: item).map { _ in }
         }
     }
 }

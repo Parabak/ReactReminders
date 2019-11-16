@@ -52,10 +52,14 @@ struct RealmDataProvider: DataProvider {
     @discardableResult
     func createReminder(title: String,
                         category: CategoryItem?,
-                        dueDate: Date) -> Observable<ReminderItem> {
+                        dueDate: Date,
+                        withNotification: Bool) -> Observable<ReminderItem> {
         let result = withRealm("creatingReminder") { realm -> Observable<ReminderItem> in
             
-            let reminder = ReminderItem(title: title, dueDate: dueDate, category: category)
+            let reminder = ReminderItem(title: title,
+                                        dueDate: dueDate,
+                                        category: category,
+                                        hasNotification: withNotification)
             try realm.write {
                 reminder.uid = (realm.objects(ReminderItem.self).max(ofProperty: "uid") ?? 0) + 1
                 realm.add(reminder)
@@ -89,6 +93,7 @@ struct RealmDataProvider: DataProvider {
                 reminder.title = toState.title
                 reminder.category = toState.category
                 reminder.dueDate = toState.date
+                reminder.hasNotification = toState.hasNotification
             }
             
             return .just(reminder)

@@ -16,7 +16,8 @@ protocol ReminderServiceType {
     @discardableResult
     func createReminder(title: String,
                         category: CategoryItem?,
-                        dueDate: Date) -> Observable<ReminderItem>
+                        dueDate: Date,
+                        withNotification: Bool) -> Observable<ReminderItem>
     
     @discardableResult
     func delete(reminder: ReminderItem) -> Observable<Void>
@@ -26,6 +27,6 @@ protocol ReminderServiceType {
     
     @discardableResult
     func toggle(reminder: ReminderItem) -> Observable<ReminderItem>
-    
+        
     func reminders() -> Observable<Results<ReminderItem>>
 }

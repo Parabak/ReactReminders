@@ -49,6 +49,7 @@
 		BFDD6664237EA32000E9A2B6 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD6663237EA32000E9A2B6 /* EditCategoryViewController.swift */; };
 		BFDD6666237EA48F00E9A2B6 /* EditCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFDD6665237EA48F00E9A2B6 /* EditCategoryViewController.xib */; };
 		BFDD6668237EF60700E9A2B6 /* ColorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD6667237EF60700E9A2B6 /* ColorCollectionCell.swift */; };
+		BFDD666A2380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD66692380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		BFDD6663237EA32000E9A2B6 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		BFDD6665237EA48F00E9A2B6 /* EditCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCategoryViewController.xib; sourceTree = "<group>"; };
 		BFDD6667237EF60700E9A2B6 /* ColorCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionCell.swift; sourceTree = "<group>"; };
+		BFDD66692380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNMutableNotificationContent+Reminder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				BF945F2B237C8A85001E98F8 /* Date+Format.swift */,
+				BFDD66692380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				BF17030E237725D400C3A2F6 /* AppDelegate.swift in Sources */,
 				BFDD6664237EA32000E9A2B6 /* EditCategoryViewController.swift in Sources */,
 				09CB60A1237C5FFE00F5774E /* ReminderItemTableCell.swift in Sources */,
+				BFDD666A2380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift in Sources */,
 				BF1703542377FCBA00C3A2F6 /* ReminderServiceType.swift in Sources */,
 				09D6748B237D9A6100BC20A7 /* SettingsViewController.swift in Sources */,
 				09D67484237D79E900BC20A7 /* Settings.swift in Sources */,

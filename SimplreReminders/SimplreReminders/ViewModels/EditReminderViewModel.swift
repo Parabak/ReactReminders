@@ -16,20 +16,23 @@ struct ReminderUpdateState {
     let title: String
     let date: Date
     let category: CategoryItem?
+    let hasNotification: Bool
     
     init(reminderItem: ReminderItem) {
         
         self.title = reminderItem.title
         self.date = reminderItem.dueDate
         self.category = reminderItem.category
+        self.hasNotification = reminderItem.hasNotification
     }
     
     
-    init(title: String, date: Date, category: CategoryItem?) {
+    init(title: String, date: Date, category: CategoryItem?, hasNotification: Bool) {
     
         self.title = title
         self.date = date
         self.category = category
+        self.hasNotification = hasNotification
     }
     
     
@@ -38,6 +41,7 @@ struct ReminderUpdateState {
         let now = Date()
         self.date = Calendar.current.date(byAdding: .day, value: 1, to: now) ?? now
         self.category = nil
+        self.hasNotification = false
     }
 }
 

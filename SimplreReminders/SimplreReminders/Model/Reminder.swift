@@ -16,19 +16,21 @@ class ReminderItem: Object {
     @objc dynamic var uid: Int = 0
     @objc dynamic var dueDate = Date()
     @objc dynamic var category: CategoryItem?
-    @objc dynamic var title: String = ""
-    @objc dynamic var isDone: Bool = false
+    @objc dynamic var title = ""
+    @objc dynamic var isDone = false
+    @objc dynamic var hasNotification = false
     
     @objc override class func primaryKey() -> String? {
         return "uid"
     }
     
-    convenience init(title: String, dueDate: Date, category: CategoryItem?) {
+    convenience init(title: String, dueDate: Date, category: CategoryItem?, hasNotification: Bool) {
         
         self.init()
         self.title = title
         self.dueDate = dueDate
         self.category = category
+        self.hasNotification = hasNotification
     }
 }
 
