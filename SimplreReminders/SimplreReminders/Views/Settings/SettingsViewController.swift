@@ -15,7 +15,7 @@ import RxDataSources
 class SettingsViewController: UIViewController {
     
     var toolbarHeight: NSLayoutConstraint?
-    let viewModel: SettingsViewModel
+    var viewModel: SettingsViewModel
     let sortingOptionsControl = UISegmentedControl(items: SortOption.allCases.map{$0.rawValue})
     let tableView = UITableView()
     var addCategory = UIButton()
@@ -74,6 +74,11 @@ class SettingsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         addCategory.rx.action = viewModel.onAddCategory()
+        
+        tableView.rx
+            .modelSelected(CategoryItem.self)
+            .subscribe(viewModel.selectReminder.inputs)
+            .disposed(by: disposeBag)
     }
     
     

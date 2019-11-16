@@ -97,9 +97,9 @@ class EditCategoryViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        let idxPath = IndexPath(item: 0, section: 0)
-        colorsCollection.selectItem(at: idxPath, animated: true, scrollPosition: .centeredVertically)
-        colorsCollection.delegate?.collectionView?(colorsCollection, didSelectItemAt: idxPath)
+        let color = Color(rawValue: model.category?.colorName ?? "") ?? Color.black
+        let itemIdx = Color.allCases.firstIndex(of: color) ?? 0
+        selectColor(at: IndexPath(item: itemIdx, section: 0))
         
         nameTxt.rx.text
             .asObservable()
@@ -113,6 +113,13 @@ class EditCategoryViewController: UIViewController {
             .filter { !$0.0.isEmpty }.map( { CategoryState($0.0, $0.1) })
             .subscribe(model.onUpdate.inputs)
             .disposed(by: disposeBag)
+    }
+    
+    
+    private func selectColor(at idxPath: IndexPath) -> Void {
+        
+        colorsCollection.selectItem(at: idxPath, animated: true, scrollPosition: .centeredVertically)
+        colorsCollection.delegate?.collectionView?(colorsCollection, didSelectItemAt: idxPath)
     }
     
     

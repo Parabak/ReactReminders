@@ -53,8 +53,30 @@ struct SettingsViewModel {
             return .empty()
         }
     }
-    //TODO: Create Category. Implement like in Spendee
-    //TODO: Edit Category
+    
+    
+    
+    
+    func onSelect() -> Action<CategoryItem, Void> {
+        
+        let action = Action<CategoryItem, Void> { categoryItem -> Observable<Void> in
+            
+            self.addCategory.onNext(categoryItem)
+            return .empty()
+        }
+        
+        return action
+    }
+    
+    
+    lazy var selectReminder: Action<CategoryItem, Void> = { this in
+        
+        return Action<CategoryItem, Void> { category -> Observable<Void> in
+            
+            this.addCategory.onNext(category)
+            return Observable.empty()
+        }
+    }(self)
  }
  
  

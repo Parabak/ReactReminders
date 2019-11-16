@@ -54,10 +54,9 @@ final class SettingsCoordinator: Coordinator {
                 guard let self = self,
                     let navController = self.presentingController.presentedViewController as? UINavigationController  else { return }
                 let coordinator = EditCategoryCoordinator(navigationController: navController,
-                                                          categoryService: self.categoriesProvider)
+                                                          categoryService: self.categoriesProvider,
+                                                          item: category)
                 coordinator.start()
-                }, onCompleted: {
-                    print("completed")
             })
             .disposed(by: disposeBag)
     }

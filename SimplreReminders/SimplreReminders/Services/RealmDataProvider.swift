@@ -17,6 +17,7 @@ enum DataServiceError: Error {
     case updateFailed(ReminderItem)
     case deletionFailed(ReminderItem)
     case toggleFailed(ReminderItem)
+    case updateCategoryFailed(CategoryItem)
 }
 
 
@@ -144,8 +145,16 @@ struct RealmDataProvider: DataProvider {
     
     @discardableResult
     func changeColor(category: CategoryItem, to newColor: Color) -> Observable<CategoryItem> {
-        assertionFailure("not implemented yet")
-        return Observable.never()
+        
+        let result = withRealm("ChangeCategoryColor") { (realm) -> Observable<CategoryItem> in
+            
+            try realm.write {
+                category.colorName = newColor.rawValue
+            }
+            return .just(category)
+        }
+        
+        return result ?? .error(DataServiceError.updateCategoryFailed(category))
     }
     
     
