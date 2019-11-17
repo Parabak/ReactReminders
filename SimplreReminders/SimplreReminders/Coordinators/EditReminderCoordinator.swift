@@ -54,20 +54,15 @@ final class EditReminderCoordinator: Coordinator {
             observable
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { reminder in
+                    
+                    if reminder.hasNotification {
                         
-                    //TODO: create or cancel Local Notification
-//                    DispatchQueue.main.async {
-
-                        if reminder.hasNotification {
-                            
-                            UNUserNotificationCenter.current().createNotificationIfNotExist(from: reminder)
-                            
-                        } else {
-                            
-                            UNUserNotificationCenter.current().cancelReminderNotification(for: reminder.uid.description)
-                        }
+                        UNUserNotificationCenter.current().createNotificationIfNotExist(from: reminder)
                         
-//                    }
+                    } else {
+                        
+                        UNUserNotificationCenter.current().cancelReminderNotification(for: reminder.uid.description)
+                    }
                     
                 }, onCompleted: { [weak self] in
                     self?.onCloseAction.execute()

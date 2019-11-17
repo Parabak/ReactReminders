@@ -30,7 +30,7 @@ final class RemindersListCoordinator: Coordinator {
                    
         let model = RemindersViewModel(dataProvider: dataProvider, settings: settings)
         let controller = RemindersViewController(viewModel: model)
-        //TODO: use Scene and SceneCoordinatorInstead
+        
         navController.pushViewController(controller, animated: false)
         
         bindActions(from: model)

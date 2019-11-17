@@ -62,7 +62,7 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
 
         tableView.rx
             .modelSelected(CategoryItem.self)
-            .subscribe(viewModel.selectReminder.inputs)
+            .subscribe(viewModel.selectCategory.inputs)
             .disposed(by: disposeBag)
     }
     

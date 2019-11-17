@@ -60,11 +60,23 @@ class ReminderItemTableCell: UITableViewCell {
             })
             .disposed(by: disposeBag)
                 
+        item.rx
+            .observe(Date.self, "dueDate")
+            .subscribe(onNext: { [weak self] date in
+                self?.dueDateLbl.text = date?.relativeFormat()
+            })
+            .disposed(by: disposeBag)
+        
+        guard let category = item.category else {
+            return
+        }
+        
         Observable.combineLatest(item.rx.observe(CategoryItem.self, "category"),
-                                 item.rx.observe(Bool.self, "isDone"))
+                                 item.rx.observe(Bool.self, "isDone"),
+                                 category.rx.observe(String.self, "colorName"))
             .subscribe(onNext: { [weak self] arg in
             
-                let (category, isDone) = arg
+                let (category, isDone, _) = arg
                 self?.categoryLbl.text = category?.name
                 let colorName = category?.colorName ?? Color.gray.rawValue
                 let color = Color(rawValue: colorName)?.createUIColor() ?? UIColor.black
@@ -73,13 +85,6 @@ class ReminderItemTableCell: UITableViewCell {
                 self?.toggleBtn.layer.borderColor = color.cgColor
                 self?.toggleBtn.layer.borderWidth = 1
                 self?.toggleBtn.backgroundColor = (isDone ?? false) ? color : UIColor.clear
-            })
-            .disposed(by: disposeBag)
-        
-        item.rx
-            .observe(Date.self, "dueDate")
-            .subscribe(onNext: { [weak self] date in
-                self?.dueDateLbl.text = date?.relativeFormat()
             })
             .disposed(by: disposeBag)
     }
