@@ -20,6 +20,7 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
     let titleTxtView = UITextView()
     let datePickerButton = UIButton()
     let categoryPickerButton = UIButton()
+    var icons = [UIView]()
     let contentStackView = UIStackView()
     let notificationSwitcher = UISwitch()
     
@@ -65,17 +66,16 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         contentStackView.alignment = .leading
         contentStackView.axis = .vertical
         
+        
         contentStackView.addArrangedSubview(lblHint)
         contentStackView.addArrangedSubview(titleTxtView)
-        contentStackView.addArrangedSubview(categoryPickerButton)
-        contentStackView.addArrangedSubview(datePickerButton)
+        contentStackView.addArrangedSubview(wrapCategoryPickButton())
+        contentStackView.addArrangedSubview(wrapDatePickButton())
         contentStackView.addArrangedSubview(wrapNotificationSwitcher())
         
         titleTxtView.layer.borderColor = UIColor.lightGray.cgColor
         titleTxtView.layer.borderWidth = 1
-        categoryPickerButton.setTitleColor(UIColor.black, for: .normal)
-        datePickerButton.setTitleColor(UIColor.black, for: .normal)
-        
+                
         return [
             contentStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
             contentStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
@@ -86,15 +86,60 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
     }
     
     
+    private func wrapCategoryPickButton() -> UIStackView {
+        
+        let horisontalStack = UIStackView()
+        horisontalStack.axis = .horizontal
+        horisontalStack.spacing = 5
+        horisontalStack.alignment = .center
+
+        categoryPickerButton.setTitleColor(UIColor.black, for: .normal)
+        
+        let categoryIcon = UIImageView(image: UIImage.init(systemName: "list.bullet"))
+        categoryIcon.contentMode = .scaleAspectFit
+        icons.append(categoryIcon)
+        
+        horisontalStack.addArrangedSubview(categoryIcon)
+        horisontalStack.addArrangedSubview(categoryPickerButton)
+        
+        return horisontalStack
+    }
+    
+    
+    private func wrapDatePickButton() -> UIStackView {
+        
+        let horisontalStack = UIStackView()
+        horisontalStack.axis = .horizontal
+        horisontalStack.spacing = 5
+        horisontalStack.alignment = .center
+
+        datePickerButton.setTitleColor(UIColor.black, for: .normal)
+        
+        let timeIcon = UIImageView(image: UIImage.init(systemName: "timer"))
+        timeIcon.contentMode = .scaleAspectFit
+        icons.append(timeIcon)
+                
+        horisontalStack.addArrangedSubview(timeIcon)
+        horisontalStack.addArrangedSubview(datePickerButton)
+        
+        return horisontalStack
+    }
+    
+    
     private func wrapNotificationSwitcher() -> UIStackView {
+        
+        let msgIcon = UIImageView(image: UIImage.init(systemName: "message"))
+        msgIcon.contentMode = .scaleAspectFit
+        icons.append(msgIcon)
         
         let lblNotificationHint = UILabel()
         lblNotificationHint.text = "Send notification: "
         
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 15
-        
+        stackView.spacing = 5
+                
+        stackView.addArrangedSubview(msgIcon)
         stackView.addArrangedSubview(lblNotificationHint)
         stackView.addArrangedSubview(notificationSwitcher)
         
@@ -124,7 +169,6 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
      
         view.addSubview(categoryPicker)
         categoryPicker.translatesAutoresizingMaskIntoConstraints = false
-        
         
         let bottomConstraint = categoryPicker.topAnchor.constraint(equalTo: view.bottomAnchor)
         categoryPickerBottomConstraint = bottomConstraint
@@ -179,20 +223,29 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
                                              inComponent: 0)
     }
     
-    //TODO: Refactoring. Extract small logic method.
+    //TODO: Refactor it: Extract logic into small methods.
     private func bindTogetherOutlets() {
         
-        //TODO: It will be nice to color also lblTitle, border of textview and date button.
-        categoryPicker.rx.modelSelected(CategoryItem.self).map { items -> NSAttributedString? in
-            
-            guard let item = items.first else { return nil }
-            let color = Color(rawValue: item.colorName) ?? Color.black
-            return NSAttributedString(string: item.name, attributes: [.foregroundColor : color.createUIColor()
-                                                                      ])
+        categoryPicker.rx.modelSelected(CategoryItem.self).map { items -> String? in
+            return items.first?.name
         }
-        .bind(to: categoryPickerButton.rx.attributedTitle())
+        .bind(to: categoryPickerButton.rx.title())
         .disposed(by: disposeBag)
     
+        categoryPicker.rx
+            .modelSelected(CategoryItem.self)
+            .map { items -> UIColor in
+                
+                guard let item = items.first else { return UIColor.black }
+                let color = (Color(rawValue: item.colorName) ?? Color.black).createUIColor()
+                return color
+        }.subscribe(onNext: { [weak self] color in
+            
+            self?.icons.forEach { $0.tintColor = color }
+            self?.titleTxtView.layer.borderColor = color.cgColor
+        }).disposed(by: disposeBag)
+        
+        
         if let category = viewModel.reminderState.category {
     
             let subject = ReplaySubject<[CategoryItem]>.create(bufferSize: 1)
