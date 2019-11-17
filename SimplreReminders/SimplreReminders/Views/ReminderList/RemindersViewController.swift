@@ -100,14 +100,6 @@ class RemindersViewController: BaseViewController<RemindersViewModel> {
                                                      for: indexPath) as! ReminderItemTableCell
             if let strongSelf = self {
                 
-                item.rx
-                    .observe(String.self, "title")
-                    .distinctUntilChanged()
-                    .subscribe(onNext: { _ in
-                        strongSelf.tableView.reloadRows(at: [indexPath], with: .fade)
-                    })
-                    .disposed(by: strongSelf.disposeBag)
-                
                 cell.configure(with: item,
                                toggleAction: strongSelf.viewModel.onToggle(item: item))
             }
