@@ -44,8 +44,8 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
             .bind(to: sortingOptionsControl.rx.value)
             .disposed(by: disposeBag)
         
-        sortingOptionsControl.rx.selectedSegmentIndex.subscribe(onNext: { idx in
-            
+        sortingOptionsControl.rx.selectedSegmentIndex.subscribe(onNext: { [unowned self] idx in
+
             guard let title = self.sortingOptionsControl.titleForSegment(at: idx),
                 let option = SortOption(rawValue: title) else {
                 return
@@ -53,13 +53,13 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
             self.viewModel.settings.changeSortOption(to: option)
             })
         .disposed(by: disposeBag)
-        
+
         viewModel.sectionCategories
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
         addCategory.rx.action = viewModel.onAddCategory()
-        
+
         tableView.rx
             .modelSelected(CategoryItem.self)
             .subscribe(viewModel.selectReminder.inputs)

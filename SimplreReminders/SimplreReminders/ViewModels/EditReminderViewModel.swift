@@ -65,7 +65,7 @@ struct EditReminderViewModel: ViewModelType {
             title = "Edit Reminder"
         } else {
             reminderState = ReminderUpdateState()
-            title = "Crete Reminder"
+            title = "Create Reminder"
         }
         
         self.categoriesProvider = categoriesProvider

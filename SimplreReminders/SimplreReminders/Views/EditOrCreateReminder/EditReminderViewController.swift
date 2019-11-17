@@ -41,8 +41,6 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         
         showNavButtons()
         bindViewModel()
-        
-        
     }
     
     private func showNavButtons() {
@@ -191,7 +189,10 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         notificationSwitcher.isOn = viewModel.reminderState.hasNotification
         
         let text = titleTxtView.rx.text.orEmpty.asObservable()
-        let category = categoryPicker.rx.modelSelected(CategoryItem.self).asObservable().map {$0.first}
+        let category = categoryPicker.rx
+            .modelSelected(CategoryItem.self)
+            .asObservable()
+            .map {$0.first}
         let date = datePicker.rx.date.asObservable()
         let notification = notificationSwitcher.rx.isOn.asObservable()
         
@@ -199,6 +200,7 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
             .map { !($0 ?? "").isEmpty }
             .bind(to: okBtn.rx.isEnabled)
             .disposed(by: disposeBag)
+        
         okBtn.rx.tap
             .withLatestFrom(Observable.combineLatest(text, category, date, notification))
             .filter{ !$0.0.isEmpty}
@@ -235,23 +237,22 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         categoryPicker.rx
             .modelSelected(CategoryItem.self)
             .map { items -> UIColor in
-                
+
                 guard let item = items.first else { return UIColor.black }
                 let color = (Color(rawValue: item.colorName) ?? Color.black).createUIColor()
                 return color
         }.subscribe(onNext: { [weak self] color in
-            
+
             self?.icons.forEach { $0.tintColor = color }
             self?.titleTxtView.layer.borderColor = color.cgColor
         }).disposed(by: disposeBag)
-        
-        
+
         if let category = viewModel.reminderState.category {
-    
+
             let subject = ReplaySubject<[CategoryItem]>.create(bufferSize: 1)
             _ = viewModel.categories.subscribe(subject)
             subject.subscribe(onNext: { [weak self] categories in
-                
+
                 let idx = categories.firstIndex(of: category) ?? 0
                 self?.selectRowInCategoryPicker(at: idx)
             })
@@ -259,20 +260,22 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         } else {
             selectRowInCategoryPicker(at: 0)
         }
-        
-        
-        datePicker.rx.date.asObservable().map { (date) -> String in            
+
+
+        datePicker.rx.date.asObservable().map { (date) -> String in
             return date.relativeFormat()
         }
         .bind(to: datePickerButton.rx.title())
         .disposed(by: disposeBag)
-        
-        
+
+
         //TODO: try to avoid duplicating logic between these two observables
         categoryPickerButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { _ in
-          
+            .subscribe(onNext: { [weak self] _ in
+
+                guard let self = self else { return }
+                
                 UIView.animate(withDuration: 0.3) {
                     let isHidden = self.categoryPickerBottomConstraint?.constant == 0
                     let constant = isHidden ? -(self.categoryPicker.frame.height + self.view.safeAreaInsets.bottom) : 0
@@ -281,14 +284,15 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
                     self.view.layoutIfNeeded()
                 }
         }).disposed(by: disposeBag)
-        
-        
+
         datePickerButton.rx.tap
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { _ in
-          
+            .subscribe(onNext: { [weak self] _ in
+
+                guard let self = self else { return }
+                
                 UIView.animate(withDuration: 0.3) {
-                    
+
                     let isHidden = self.datePickerBottomConstraint?.constant == 0
                     let constant = isHidden ? -(self.datePicker.frame.height + self.view.safeAreaInsets.bottom) : 0
                     self.datePickerBottomConstraint?.constant = constant
@@ -296,28 +300,22 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
                     self.view.layoutIfNeeded()
                 }
         }).disposed(by: disposeBag)
-        
-        
+
         notificationSwitcher.rx.isOn
             .filter {$0}
             .subscribe(onNext: { [weak self] flag in
-            
+
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (granted, error) in
-                    
+
                     DispatchQueue.main.async {
                         self?.notificationSwitcher.isOn = granted
                     }
-                    
+
                     if let error = error {
                         print(error.localizedDescription)
                     }
                 }
             })
             .disposed(by: disposeBag)
-    }
-    
-    //TODO: never called. reference loop
-    deinit {
-        print("everything is OK, EditReminderViewController is dead")
     }
 }
