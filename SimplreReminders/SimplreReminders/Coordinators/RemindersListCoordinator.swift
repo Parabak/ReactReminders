@@ -72,7 +72,7 @@ final class RemindersListCoordinator: Coordinator {
             let subject = PublishSubject<Void>()
             self.navController.dismiss(animated: true) {
                 
-                self.coordinators = self.coordinators.dropLast()                
+                self.coordinators = self.coordinators.dropLast()
                 subject.onCompleted()
             }
             

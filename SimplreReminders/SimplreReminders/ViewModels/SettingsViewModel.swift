@@ -69,7 +69,7 @@ struct SettingsViewModel: ViewModelType {
     }
     
     
-    lazy var selectReminder: Action<CategoryItem, Void> = { this in
+    lazy var selectCategory: Action<CategoryItem, Void> = { this in
         
         return Action<CategoryItem, Void> { category -> Observable<Void> in
             

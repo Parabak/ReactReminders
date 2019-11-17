@@ -41,3 +41,10 @@ extension ReminderItem: IdentifiableType {
         return isInvalidated ? 0 : uid
     }
 }
+
+extension ReminderItem {
+    
+    static func == (lhs: ReminderItem, rhs: ReminderItem) -> Bool {
+        return lhs.uid == rhs.uid && lhs.title == rhs.title
+    }
+}
