@@ -53,7 +53,7 @@ class CategoryTableCell: UITableViewCell {
             .subscribe(onNext: { [weak self] colorName in
 
                 guard let name = colorName, let color = Color(rawValue: name) else {
-                    self?.colorPreview.backgroundColor = Color.black.createUIColor()
+                    self?.colorPreview.backgroundColor = Color.gray.createUIColor()
                     return
                 }
                 self?.colorPreview.backgroundColor = color.createUIColor()

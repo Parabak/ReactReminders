@@ -80,7 +80,7 @@ final class EditCategoryViewController: BaseViewController<EditCategoryViewModel
             })
             .disposed(by: disposeBag)
 
-        let color = Color(rawValue: viewModel.category?.colorName ?? "") ?? Color.black
+        let color = Color(rawValue: viewModel.category?.colorName ?? "") ?? Color.gray
         let itemIdx = Color.allCases.firstIndex(of: color) ?? 0
         selectColor(at: IndexPath(item: itemIdx, section: 0))
         

@@ -12,27 +12,27 @@ import RxDataSources
 
 
 enum Color: String, CaseIterable {
-    case black
+    case gray
     case blue
-    case yeallow
+    case cyan
     case magenta
     case orange
     case brown
-    case purple
     case red
     case green
+    case purple
     
     
     func createUIColor() -> UIColor {
         
         var color: UIColor
         switch self {
-        case .black:
-            color = UIColor.black
+        case .gray:
+            color = UIColor.gray
         case .blue:
             color = UIColor.blue
-        case .yeallow:
-            color = UIColor.yellow
+        case .cyan:
+            color = UIColor.cyan
         case .magenta:
             color = UIColor.magenta
         case .orange:

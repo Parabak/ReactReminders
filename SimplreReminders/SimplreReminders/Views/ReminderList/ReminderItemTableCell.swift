@@ -66,7 +66,7 @@ class ReminderItemTableCell: UITableViewCell {
             
                 let (category, isDone) = arg
                 self?.categoryLbl.text = category?.name
-                let colorName = category?.colorName ?? Color.black.rawValue
+                let colorName = category?.colorName ?? Color.gray.rawValue
                 let color = Color(rawValue: colorName)?.createUIColor() ?? UIColor.black
                 
                 self?.categoryLbl.textColor = color

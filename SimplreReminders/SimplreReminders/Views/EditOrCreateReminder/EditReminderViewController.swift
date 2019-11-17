@@ -239,7 +239,7 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
             .map { items -> UIColor in
 
                 guard let item = items.first else { return UIColor.black }
-                let color = (Color(rawValue: item.colorName) ?? Color.black).createUIColor()
+                let color = (Color(rawValue: item.colorName) ?? Color.gray).createUIColor()
                 return color
         }.subscribe(onNext: { [weak self] color in
 
