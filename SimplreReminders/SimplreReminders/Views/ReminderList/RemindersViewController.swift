@@ -14,30 +14,13 @@ import Action
 import RxDataSources
 
 
-class RemindersViewController: UIViewController {
-    
-    var viewModel: RemindersViewModel
-    
+class RemindersViewController: BaseViewController<RemindersViewModel> {
+
     private(set) var tableView = UITableView()
     private let disposeBag = DisposeBag()
     private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<ReminderSection>(configureCell: configureCell,
                                                                                           titleForHeaderInSection: configureTitleForHeader,
                                                                                           canEditRowAtIndexPath: canEditRowAtIndexPath)
-    
-    
-    init(viewModel: RemindersViewModel) {
-        
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()

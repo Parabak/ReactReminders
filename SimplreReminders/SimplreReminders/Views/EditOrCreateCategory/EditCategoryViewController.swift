@@ -12,9 +12,7 @@ import RxSwift
 import RxDataSources
 
 
-class EditCategoryViewController: UIViewController {
-    
-    let model: EditCategoryViewModel
+final class EditCategoryViewController: BaseViewController<EditCategoryViewModel> {
     
     let saveBtn = UIButton(type: .system)
     let nameTxt = UITextField()
@@ -47,19 +45,6 @@ class EditCategoryViewController: UIViewController {
     )
     
     
-    init(model: EditCategoryViewModel) {
-        
-        self.model = model
-    
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -75,10 +60,10 @@ class EditCategoryViewController: UIViewController {
     
     func bindViewModel() {
         
-        nameTxt.isEnabled = (model.category?.name ?? "").isEmpty
-        nameTxt.text = model.category?.name
+        nameTxt.isEnabled = (viewModel.category?.name ?? "").isEmpty
+        nameTxt.text = viewModel.category?.name
         
-        model.sectionedColors
+        viewModel.sectionedColors
             .bind(to: colorsCollection.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -97,7 +82,7 @@ class EditCategoryViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        let color = Color(rawValue: model.category?.colorName ?? "") ?? Color.black
+        let color = Color(rawValue: viewModel.category?.colorName ?? "") ?? Color.black
         let itemIdx = Color.allCases.firstIndex(of: color) ?? 0
         selectColor(at: IndexPath(item: itemIdx, section: 0))
         
@@ -111,7 +96,7 @@ class EditCategoryViewController: UIViewController {
         saveBtn.rx.tap
             .withLatestFrom(state)
             .filter { !$0.0.isEmpty }.map( { CategoryState($0.0, $0.1) })
-            .subscribe(model.onUpdate.inputs)
+            .subscribe(viewModel.onUpdate.inputs)
             .disposed(by: disposeBag)
     }
     

@@ -16,10 +16,14 @@ import RxDataSources
 typealias CategoryState = (name: String, color: Color)
 typealias ColorSection = AnimatableSectionModel<String, Color>
 
-struct EditCategoryViewModel {
+struct EditCategoryViewModel: ViewModelType {
 
+    var title: String {
+        get {
+            category != nil ? "Edit Category" : "Create Category"
+        }
+    }
     let category: CategoryItem?
-    
     let onUpdate: Action<CategoryState, Void>
     
     var sectionedColors: Observable<[ColorSection]> {

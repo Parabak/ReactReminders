@@ -12,10 +12,9 @@ import RxSwift
 import RxDataSources
 
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController<SettingsViewModel> {
     
     var toolbarHeight: NSLayoutConstraint?
-    var viewModel: SettingsViewModel
     let sortingOptionsControl = UISegmentedControl(items: SortOption.allCases.map{$0.rawValue})
     let tableView = UITableView()
     var addCategory = UIButton()
@@ -23,20 +22,6 @@ class SettingsViewController: UIViewController {
     let disposeBag = DisposeBag()
     private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<CategoriesSection>(configureCell: configureCell,
                                                                                             titleForHeaderInSection: configureTitleHeader)
-    
-    
-    init(viewModel: SettingsViewModel) {
-        
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     override func viewDidLoad() {
         

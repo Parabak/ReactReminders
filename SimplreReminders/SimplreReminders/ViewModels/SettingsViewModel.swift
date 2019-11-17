@@ -16,14 +16,14 @@ import RxDataSources
 typealias CategoriesSection = AnimatableSectionModel<String, CategoryItem>
 
  
-struct SettingsViewModel {
+struct SettingsViewModel: ViewModelType {
     
     let addCategory = PublishSubject<CategoryItem?>()
     private let categoriesProvider: CategoryServiceType
     let settings: Settings
     let onCancel: CocoaAction?
     let disposeBag = DisposeBag()
-    
+    let title = "Settings"
     
     init(categoriesProvider: CategoryServiceType,
          settings: Settings,

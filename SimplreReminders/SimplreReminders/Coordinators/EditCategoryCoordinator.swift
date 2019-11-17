@@ -35,7 +35,8 @@ final class EditCategoryCoordinator: Coordinator {
         
         let model = EditCategoryViewModel(category: categoryItem,
                                           onUpdate: onUpdateColor(category: categoryItem))
-        let controller = EditCategoryViewController(model: model)
+        
+        let controller = EditCategoryViewController(viewModel: model)
         navController.pushViewController(controller, animated: true)
     }
     

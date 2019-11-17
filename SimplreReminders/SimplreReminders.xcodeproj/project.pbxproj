@@ -50,6 +50,8 @@
 		BFDD6666237EA48F00E9A2B6 /* EditCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFDD6665237EA48F00E9A2B6 /* EditCategoryViewController.xib */; };
 		BFDD6668237EF60700E9A2B6 /* ColorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD6667237EF60700E9A2B6 /* ColorCollectionCell.swift */; };
 		BFDD666A2380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD66692380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift */; };
+		BFDD666C238134C800E9A2B6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD666B238134C800E9A2B6 /* BaseViewController.swift */; };
+		BFDD666E2381354400E9A2B6 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD666D2381354400E9A2B6 /* ViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		BFDD6665237EA48F00E9A2B6 /* EditCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCategoryViewController.xib; sourceTree = "<group>"; };
 		BFDD6667237EF60700E9A2B6 /* ColorCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionCell.swift; sourceTree = "<group>"; };
 		BFDD66692380564000E9A2B6 /* UNMutableNotificationContent+Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNMutableNotificationContent+Reminder.swift"; sourceTree = "<group>"; };
+		BFDD666B238134C800E9A2B6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BFDD666D2381354400E9A2B6 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 		BF1703452377295E00C3A2F6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFDD666D2381354400E9A2B6 /* ViewModelType.swift */,
 				BF170346237729BD00C3A2F6 /* RemindersViewModel.swift */,
 				BF17036E2378835E00C3A2F6 /* EditReminderViewModel.swift */,
 				09D67487237D983800BC20A7 /* SettingsViewModel.swift */,
@@ -232,6 +237,7 @@
 		BF17034823772A1C00C3A2F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFDD666B238134C800E9A2B6 /* BaseViewController.swift */,
 				BFDD665E237E995200E9A2B6 /* EditOrCreateCategory */,
 				09D67489237D9A5100BC20A7 /* Settings */,
 				09CB609E237C5FCA00F5774E /* ReminderList */,
@@ -412,10 +418,12 @@
 				BF1703712378A21600C3A2F6 /* EditReminderCoordinator.swift in Sources */,
 				BFDD6668237EF60700E9A2B6 /* ColorCollectionCell.swift in Sources */,
 				BF17036F2378835E00C3A2F6 /* EditReminderViewModel.swift in Sources */,
+				BFDD666C238134C800E9A2B6 /* BaseViewController.swift in Sources */,
 				BFDD6660237E99FE00E9A2B6 /* EditCategoryCoordinator.swift in Sources */,
 				09D67486237D952E00BC20A7 /* SettingsCoordinator.swift in Sources */,
 				BF1703592377FD0600C3A2F6 /* Category.swift in Sources */,
 				BF17034A23772A3100C3A2F6 /* RemindersViewController.swift in Sources */,
+				BFDD666E2381354400E9A2B6 /* ViewModelType.swift in Sources */,
 				BF1703622378274800C3A2F6 /* Color.swift in Sources */,
 				BF8E8DBC237DE025002A2897 /* CategoryTableCell.swift in Sources */,
 				BF945F2C237C8A85001E98F8 /* Date+Format.swift in Sources */,

@@ -46,11 +46,12 @@ struct ReminderUpdateState {
 }
 
 
-struct EditReminderViewModel {
+struct EditReminderViewModel: ViewModelType {
     
     let reminderState: ReminderUpdateState
     let onUpdate: Action<ReminderUpdateState, Void>
     let onCancel: CocoaAction?
+    let title: String
     private let categoriesProvider: CategoryServiceType
     private  let disposeBag = DisposeBag()
     
@@ -61,8 +62,10 @@ struct EditReminderViewModel {
         
         if let reminder = reminder {
             reminderState = ReminderUpdateState(reminderItem: reminder)
+            title = "Edit Reminder"
         } else {
             reminderState = ReminderUpdateState()
+            title = "Crete Reminder"
         }
         
         self.categoriesProvider = categoriesProvider

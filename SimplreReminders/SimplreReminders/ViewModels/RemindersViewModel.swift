@@ -16,14 +16,14 @@ import UserNotifications
 typealias ReminderSection = AnimatableSectionModel<String, ReminderItem>
 
 
-struct RemindersViewModel {
+struct RemindersViewModel: ViewModelType {
 
     let addReminder = PublishSubject<ReminderItem?>()
     let showSettings = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     let dataProvider: ReminderServiceType
     let settings: Settings
-    
+    let title = "Reminders"
     
     var sectionedReminders: Observable<[ReminderSection]> {
             

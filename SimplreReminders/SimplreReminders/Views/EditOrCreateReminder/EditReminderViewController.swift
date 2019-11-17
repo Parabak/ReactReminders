@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 
 
-class EditReminderViewController: UIViewController {
+class EditReminderViewController: BaseViewController<EditReminderViewModel> {
     
     private(set) var closeBtn = UIButton(type: .close)
     let okBtn = UIButton()
@@ -26,21 +26,6 @@ class EditReminderViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var datePickerBottomConstraint: NSLayoutConstraint?
     private var categoryPickerBottomConstraint: NSLayoutConstraint?
-    
-    var viewModel: EditReminderViewModel
-    
-    
-    init(viewModel: EditReminderViewModel) {
-        
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     
     override func viewDidLoad() {
@@ -90,7 +75,7 @@ class EditReminderViewController: UIViewController {
         titleTxtView.layer.borderColor = UIColor.lightGray.cgColor
         titleTxtView.layer.borderWidth = 1
         categoryPickerButton.setTitleColor(UIColor.black, for: .normal)
-        datePickerButton.setTitleColor(UIColor.black, for: .normal)        
+        datePickerButton.setTitleColor(UIColor.black, for: .normal)
         
         return [
             contentStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
