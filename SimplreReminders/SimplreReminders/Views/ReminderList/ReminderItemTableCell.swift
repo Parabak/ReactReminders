@@ -109,7 +109,7 @@ class ReminderItemTableCell: UITableViewCell {
         textStack.axis = .vertical
         textStack.alignment = .leading
         textStack.addArrangedSubview(titleLbl)
-        textStack.addArrangedSubview(categoryLbl)
+        textStack.addArrangedSubview(dueDateLbl)
 
         stackView.spacing = 15
         stackView.axis = .horizontal
@@ -117,7 +117,7 @@ class ReminderItemTableCell: UITableViewCell {
         stackView.distribution = .fill
         stackView.addArrangedSubview(toggleBtn)
         stackView.addArrangedSubview(textStack)
-        stackView.addArrangedSubview(dueDateLbl)
+        stackView.addArrangedSubview(categoryLbl)
         
         addSubview(stackView)
     }

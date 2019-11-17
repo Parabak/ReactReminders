@@ -70,9 +70,10 @@ class RemindersViewController: BaseViewController<RemindersViewModel> {
     // MARK: Private
     private func bindViewModel() -> Void {
                 
-        viewModel.sectionedReminders.bind(to: tableView.rx.items(dataSource: dataSource))
+        viewModel.sectionedReminders
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
         tableView.rx.itemSelected.map { indexPath -> ReminderItem in
             return try! self.dataSource.model(at: indexPath) as! ReminderItem
         }
@@ -98,6 +99,14 @@ class RemindersViewController: BaseViewController<RemindersViewModel> {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReminderItemTableCell",
                                                      for: indexPath) as! ReminderItemTableCell
             if let strongSelf = self {
+                
+                item.rx
+                    .observe(String.self, "title")
+                    .distinctUntilChanged()
+                    .subscribe(onNext: { _ in
+                        strongSelf.tableView.reloadRows(at: [indexPath], with: .fade)
+                    })
+                    .disposed(by: strongSelf.disposeBag)
                 
                 cell.configure(with: item,
                                toggleAction: strongSelf.viewModel.onToggle(item: item))

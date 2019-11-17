@@ -14,7 +14,7 @@ import RxSwift
 class EditReminderViewController: BaseViewController<EditReminderViewModel> {
     
     private(set) var closeBtn = UIButton(type: .close)
-    let okBtn = UIButton()
+    let okBtn = UIButton(type: .system)
     let datePicker = UIDatePicker()
     let categoryPicker = UIPickerView()
     let titleTxtView = UITextView()
@@ -38,16 +38,15 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         constraints.append(contentsOf: addCategoryPicker())
         NSLayoutConstraint.activate(constraints)
         
+        showNavButtons()
         bindViewModel()
         
-        showNavButtons()
+        
     }
     
     private func showNavButtons() {
     
         okBtn.setTitle("OK", for: .normal)
-        okBtn.setTitleColor(UIColor.black, for: .normal)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: okBtn)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeBtn)
     }
@@ -152,6 +151,10 @@ class EditReminderViewController: BaseViewController<EditReminderViewModel> {
         let date = datePicker.rx.date.asObservable()
         let notification = notificationSwitcher.rx.isOn.asObservable()
         
+        titleTxtView.rx.text
+            .map { !($0 ?? "").isEmpty }
+            .bind(to: okBtn.rx.isEnabled)
+            .disposed(by: disposeBag)
         okBtn.rx.tap
             .withLatestFrom(Observable.combineLatest(text, category, date, notification))
             .filter{ !$0.0.isEmpty}

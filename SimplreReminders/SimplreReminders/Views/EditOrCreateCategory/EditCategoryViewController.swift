@@ -48,9 +48,7 @@ final class EditCategoryViewController: BaseViewController<EditCategoryViewModel
     override func viewDidLoad() {
     
         super.viewDidLoad()
-                        
-        // Style cell
-        // save new caetgory
+
         styleOutlets()
         NSLayoutConstraint.activate(showOutlets())
         
